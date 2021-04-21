@@ -3,6 +3,10 @@ body {
   background-color: #fefeff;
 }
 
+*{
+	cursor: url(../images/ypen2.ico), default !important;
+}
+
 .layout_padding {
   padding: 75px 0;
 }
@@ -35,7 +39,10 @@ body {
 }
 
 .hero_section .call_to-btn {}
-
+.hero_section{
+	position: relative;
+    top: -80px;
+}
 .call_to-btn img {
   width: 18px;
   margin-left: 10px;
@@ -100,7 +107,10 @@ a:focus {
   position: relative;
 }
 
-
+.my-navbar{
+	position: absolute;
+    right: 0;
+}
 
 .top_container::before {
   content: "";
@@ -188,6 +198,7 @@ a:focus {
 
 .hero_detail-box {
   width: 40%;
+  margin-top:100px;
 }
 
 .hero_img-container {
@@ -205,24 +216,30 @@ a:focus {
 }
 
 .hero_detail-box h1 {
-  font-size: 50px;
+  font-size: 40px;
+  font-family:YouYuan;
   color: #fefeff;
   font-weight: 600;
   width: 70%;
 }
 
-
 .hero_detail-box p {
   margin-top: 20px;
   margin-bottom: 35px;
+  font-size:16px;
 }
 
 
 /* end hero section */
 
 /* common style for some sections */
+
+.common_style {
+	position:relative;
+	top:-200px;
+}
 .common_style>section {
-  padding: 50px 0;
+  /*padding: 50px 0;*/
 }
 
 .common_style .row {
@@ -558,3 +575,5 @@ a:focus {
 
 
 /* end footer section*/
+
+
