@@ -31,7 +31,11 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
             <span>
+<<<<<<< HEAD
               	1111111阿
+=======
+              	成语趣味学习平台11
+>>>>>>> branch 'master' of https://github.com/MMMChengyu/chengyu
             </span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
