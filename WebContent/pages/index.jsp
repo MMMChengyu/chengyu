@@ -25,6 +25,10 @@
 </head>
 <body>
 <div class="top_container">
+<video width="320" height="240" controls="controls">
+  <source src="http://kky999.com/home/video/showS/id/kKy34154206454d18a1cbe395a9bc7f35a2" type="video/mp4" />
+  </object>
+</video>
     <!-- header section strats -->
     <header class="header_section">
       <div class="container">
