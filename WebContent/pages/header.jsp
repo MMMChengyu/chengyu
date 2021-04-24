@@ -4,6 +4,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+ <!-- progress barstle -->
+ <link rel="stylesheet" href="../css/css-circular-prog-bar.css">
+ <!-- fonts style -->
+ <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
+ <!-- font wesome stylesheet -->
+ <link rel="stylesheet" href="../css/font-awesome.min.css">
+ <!-- Custom styles for this template -->
+ <link href="../css/style.css" rel="stylesheet" />
+ <!-- responsive style -->
+ <link href="../css/responsive.css" rel="stylesheet" />
+ <link href="../css/index.css" rel="stylesheet" />
+
+
+
+ <link rel="stylesheet" href="../css/css-circular-prog-bar.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -29,7 +45,7 @@
                   <a class="nav-link" href="index.jsp">首页<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="about.html">成语分类</a>
+                  <a class="nav-link" href="category.jsp">成语分类</a>
                 </li>
 
                 <li class="nav-item ">
@@ -37,7 +53,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="why.html">登录 </a>
+                  <a class="nav-link" href="login.jsp">登录 </a>
                 </li>
 
               </ul>

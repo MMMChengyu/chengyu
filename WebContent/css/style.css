@@ -129,15 +129,7 @@ a:focus {
   background-image: none;
 }
 
-.top_container::after {
-  content: "";
-  position: absolute;
-  width: 75px;
-  height: 75px;
-  bottom: 20%;
-  left: 6%;
-  background-color: #fdd31d;
-}
+
 .tlinks{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 
 .sub_page .top_container::after {

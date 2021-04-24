@@ -28,24 +28,6 @@ html h2, body h2 {
   color: #f37841;
   font-size: 3rem;
 }
-html section, body section {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-  min-height: 100%;
-  margin-bottom: 3rem;
-}
 html section button, body section button {
   -webkit-align-self: center;
       -ms-flex-item-align: center;

@@ -14,18 +14,20 @@
 <meta name="author" content="">
 <title>成语分类</title>
  <link href="../css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+     <link rel="stylesheet" href="../css/css-circular-prog-bar.css">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/prettyPhoto.css" rel="stylesheet">
     <link href="../css/price-range.css" rel="stylesheet">
+    <link href="../css/stylee.css" rel="stylesheet" />
     <link href="../css/animate.css" rel="stylesheet">
 	<link href="../css/main.css" rel="stylesheet">
 	<link href="../css/responsive.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/htmleaf-demo.css" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet">
-    <link href="../css/jquery.fancybox.min.css" rel="stylesheet">
-	<link href="../css/normalize.css" rel="stylesheet">
-	<link href="../css/stylee.css" rel="stylesheet">
-	<link href="../css/style.css" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
+ <link href="../css/style.css" rel="stylesheet" />
+ 
+ 
+ 
 </head>
 <!--/head-->
 <style type="text/css">
@@ -46,11 +48,54 @@ ul li {
 }
 ul li a{
 	color:black;
-	font-size:20px;
+	font-size:16px;
+	font-weight:bold;
+	font-family:'youyuan';
 }
 </style>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<div class="top_container ">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              成语趣味学习平台
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.jsp"> 首页 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="category.jsp"> 成语分类 </a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" href="admission.html"> 学习分析 </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="login.jsp"> 登录 </a>
+                </li>
+
+              </ul>
+            </div>
+            </div>
+        </nav>
+      </div>
+    </header>
+
+  </div>
+  <!-- end header section -->
 	<section style="margin-top: 0px;margin-bottom: 50px" width=100%>
 		<div class="container" style="margin-top: 100px;width:20%;float:left;" >
 	      <nav class="containerleft">
@@ -162,11 +207,15 @@ ul li a{
 	</div>  
   </section>
   <!-- footer section -->
-  <section class="container-fluid footer_section">0
+  <section class="container-fluid footer_section">
     <p>
-      Copyright &copy; 2021.Company name All rights reserved.
+      Copyright &copy; 2020.Company name All rights reserved.
     </p>
   </section>
   <!-- footer section -->
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+    
 </body>
 </html>

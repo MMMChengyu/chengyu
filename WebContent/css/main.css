@@ -1476,7 +1476,7 @@ h2.title {
 }
 
 .login-form form button, .signup-form form button {
-  background: #006439;
+  background: #fdd31d;
   border: medium none;
   border-radius: 0;
   color: #FFFFFF;
@@ -1501,7 +1501,7 @@ h2.title {
 
 
 .or{
-	background: #006439;
+	background: #fdd31d;
 	border-radius: 40px;
 	color: #FFFFFF;
 	font-family: 'Roboto', sans-serif;
