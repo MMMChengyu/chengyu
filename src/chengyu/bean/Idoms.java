@@ -1,8 +1,8 @@
 package chengyu.bean;
 
 public class Idoms {
-	public int idomsid;
-	public String idomsname;
+	public int id;
+	public String name;
 	public int sort;
 	public String video;
 	public String img;
@@ -11,19 +11,19 @@ public class Idoms {
 	public String story_ch;
 	public String story_py;
 	
-	public int getIdomsid() {
-		return idomsid;
+	public int getid() {
+		return id;
 	}
 	
-	public void setIdomsid(int idomsid) {
-		this.idomsid = idomsid;
+	public void setid(int id) {
+		this.id = id;
 	}
 	
-	public String getIdomsname() {
-		return idomsname;
+	public String getname() {
+		return name;
 	}
-	public void setIdomsname(String idomsname) {
-		this.idomsname = idomsname;
+	public void setname(String name) {
+		this.name = name;
 	}
 	
 	public int getSort() {

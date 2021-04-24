@@ -17,14 +17,14 @@ public class IdomsDAOImp extends baseDAO implements IdomsDAO {
 	public String story_ch;
 	public String story_py;
 	@Override
-	public ArrayList findIdoms() throws SQLException {
-		String sql = "select id idomsid, name idomsname,sort sort, video video, img img, descri_ch descri_ch, descri_py descri_py,story_ch story_ch, story_py story_py from idoms";
+	public ArrayList<Idoms> findIdoms() throws SQLException {
+		String sql = "select id, name, sort  Sort, video  Video, img Img, descri_ch Descri_ch , descri_py Descri_py ,story_ch Story_ch, story_py Story_py from idoms";
 		return findObjs(sql, Idoms.class);
 	}
 
 	@Override
 	public Idoms findIdom(int idomsid) throws SQLException {
-		String sql = "select  id idomsid, name idomsname,sort sort, video video, img img, descri_ch descri_ch, descri_py descri_py,story_ch story_ch, story_py story_py from idoms where dishid = ?";
+		String sql = "select id, name, sort  Sort, video  Video, img Img, descri_ch Descri_ch , descri_py Descri_py ,story_ch Story_ch, story_py Story_py from idoms where id = ?";
 		Object[] params = {idomsid};
 		return (Idoms) findObj(sql, params,  Idoms.class);
 	}
@@ -39,7 +39,7 @@ public class IdomsDAOImp extends baseDAO implements IdomsDAO {
 	}
 	@Override
 	public ArrayList<Idoms> findIdomsbySortid(int sortid) throws SQLException {
-		String sql = "select  id idomsid, name idomsname,sort sort, video video, img img, descri_ch descri_ch, descri_py descri_py,story_ch story_ch, story_py story_py from idoms where sort = ?";
+		String sql = "select id, name, sort  Sort, video  Video, img Img, descri_ch Descri_ch , descri_py Descri_py ,story_ch Story_ch, story_py Story_py from idoms where sort = ?";
 		Object[] params = {sortid};
 		return findObjs(sql, params,  Idoms.class);
 	}

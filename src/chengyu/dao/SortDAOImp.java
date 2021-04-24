@@ -9,13 +9,13 @@ public class SortDAOImp extends baseDAO implements SortDAO {
 
 	@Override
 	public ArrayList findSorts() throws SQLException {
-		String sql = "select id sortid,sname_ch sortname from sort";
+		String sql = "select id ,sname_ch name from sort";
 		return findObjs(sql, Sort.class);
 	}
 
 	@Override
 	public Sort findSort(int sortid) throws SQLException {
-		String sql = "select id sortid,sname_ch sortname from sort where id=?";
+		String sql = "select id ,sname_ch name from sort where id=?";
 		Object[] params = {sortid};
 		return (Sort) findObj(sql, params,  Sort.class);
 	}

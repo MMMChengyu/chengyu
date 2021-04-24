@@ -1,20 +1,20 @@
 package chengyu.bean;
 
 public class Sort {
-	public int sortid;
-	public String sortname;
+	public int id;
+	public String name;
 	
-	public int getSortid() {
-		return sortid;
+	public int getid() {
+		return id;
 	}
-	public void setSortid(int sortid) {
-		this.sortid = sortid;
+	public void setid(int id) {
+		this.id = id;
 	}
 	
-	public String getSortname() {
-		return sortname;
+	public String getname() {
+		return name;
 	}
-	public void setSortname(String sortname) {
-		this.sortname = sortname;
+	public void setname(String name) {
+		this.name = name;
 	}
 }

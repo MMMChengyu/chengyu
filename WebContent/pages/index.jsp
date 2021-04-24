@@ -1,5 +1,45 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
+<%@page import="chengyu.utils.PageModel"%>
+<%@page import="chengyu.dao.SortDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="chengyu.utils.DAOFactory"%>
+<%@page import="chengyu.dao.IdomsDAO"%>
+<%@page import="chengyu.biz.IdomsService"%>
+<%@page import="chengyu.bean.Idoms"%>
+<%@page import="chengyu.bean.Sort"%>
+<%@page import="chengyu.dao.*"%>
+<%@page import="chengyu.biz.*"%>
+<%@page import="chengyu.utils.*"%>
+<%@page import="chengyu.utils.ConfigFactory" %>    
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%
+if(session.getAttribute("pageSize") == null){
+	session.setAttribute("pageSize", ConfigFactory.readProperty("pageSize"));
+}
+if(request.getParameter("pageNO") == null){
+	request.setAttribute("pageNO", "1");
+}
+else{
+	request.setAttribute("pageNO", request.getParameter("pageNO"));
+}
+
+//根据页码生成相应的dishlist
+int pageNO = Integer.parseInt((String)request.getAttribute("pageNO"));
+int pageSize = Integer.parseInt((String)session.getAttribute("pageSize"));
+IdomsService idomsService = new IdomsService();
+PageModel<Idoms> pagemodel = idomsService.findIdoms4PageList(pageNO, pageSize);
+request.setAttribute("idomslist", pagemodel.getList().subList(0, 3));
+request.setAttribute("idomslist2", pagemodel.getList().subList(3, 6));
+request.setAttribute("idomslist3", pagemodel.getList().subList(6, 9));
+request.setAttribute("idomslist4", pagemodel.getList().subList(9,12));
+request.setAttribute("pageModel", pagemodel); 
+
+%>    
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,12 +80,13 @@
           <div class="col-md-8">
 			
 			   <div class="container">
-                <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4 " data-scale=''>
-                    <li class="">
+                <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4 ">
+                	<c:forEach items="${requestScope.idomslist}" var="currentidoms"
+									varStatus="status">
+					<li class="">
                         <div class="widget widget-article widget-shadow">
                             <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
+                                <img class="cover-image overlay-scale" src="../images/chengyu/${currentidoms.getImg()}" alt="">
                             </div>
                             <div class="widget-body">
                                 <div class="widget-body-footer">
@@ -62,53 +103,8 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
-                    
-                   <li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                                		<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                                		<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    </li>	
+					</c:forEach>
                 </ul>
             </div>
 			
@@ -128,39 +124,16 @@
 
  		<div class="container">
                 <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4 " data-scale=''>
-                    <li class="">
+                  <c:forEach items="${requestScope.idomslist2}" var="currentidoms"
+									varStatus="status">
+					<li class="">
                         <div class="widget widget-article widget-shadow">
                             <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
+                                <img class="cover-image overlay-scale" src="../images/chengyu/${currentidoms.getImg()}" alt="">
                             </div>
                             <div class="widget-body">
                                 <div class="widget-body-footer">
-										<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                 
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                   <li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                                	 	<form>
+                                	<form>
 									        <select>
 									        	<option selected=selected>请选择正确的成语</option>
 									            <option>艾欧尼亚</option>
@@ -173,30 +146,8 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
-                    
-                    <li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                                	 	<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    </li>	
+					</c:forEach>
                 </ul>
             </div>
 
@@ -227,15 +178,16 @@
             
             	<div class="container">
                 <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4 " data-scale=''>
-                    <li class="">
+                   <c:forEach items="${requestScope.idomslist3}" var="currentidoms"
+									varStatus="status">
+					<li class="">
                         <div class="widget widget-article widget-shadow">
                             <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
+                                <img class="cover-image overlay-scale" src="../images/chengyu/${currentidoms.getImg()}" alt="">
                             </div>
                             <div class="widget-body">
                                 <div class="widget-body-footer">
-                                			<form>
+                                	<form>
 									        <select>
 									        	<option selected=selected>请选择正确的成语</option>
 									            <option>艾欧尼亚</option>
@@ -248,53 +200,8 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
-                    
-                   <li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                               										<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                                										<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    </li>	
+					</c:forEach>
                 </ul>
             </div>
             
@@ -314,57 +221,12 @@
 
 <div class="container">
                 <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4 " data-scale=''>
-                    <li class="">
+                    <c:forEach items="${requestScope.idomslist4}" var="currentidoms"
+									varStatus="status">
+					<li class="">
                         <div class="widget widget-article widget-shadow">
                             <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                                		<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                   <li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                                		<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/students.jpg"
-                                alt="">
+                                <img class="cover-image overlay-scale" src="../images/chengyu/${currentidoms.getImg()}" alt="">
                             </div>
                             <div class="widget-body">
                                 <div class="widget-body-footer">
@@ -381,7 +243,8 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li>	
+					</c:forEach>
                 </ul>
             </div>
 

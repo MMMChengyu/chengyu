@@ -16065,6 +16065,7 @@ a:focus {
  min-height: 1px;
  padding-right: 15px;
  padding-left: 15px;
+ padding-bottom:25px;
  margin-bottom: 22px;
  box-shadow:2px 4px 9px #f6cc19;
  margin-right:10px;
@@ -16741,6 +16742,7 @@ a:focus {
 }
 .widget .widget-header {
 	border-radius: 3px 3px 0 0;
+	margin:25px 0 20px 0;
 }
 .widget .widget-header:last-child {
 	border-radius: inherit;
@@ -31906,12 +31908,12 @@ ul, li {
 	margin: 0;
 }
 .btn-info {
-	background-color: #027938;
-	border-color: #027938;
+	background-color: #6ebcae;
+	border-color: #6ebcae;
 }
 .btn-info:hover, .btn-info:focus, .btn-info:active {
-	background-color: #027938;
-	border-color: #027938;
+	background-color: #6ebcae;
+	border-color: #6ebcae;
 	opacity: .8;
 }
 .navlist > li {
