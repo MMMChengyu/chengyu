@@ -37,5 +37,10 @@ public class IdomsDAOImp extends baseDAO implements IdomsDAO {
 	public ArrayList<Idoms> findIdoms(String sql,Object[] params){
 		return  this.findObjs(sql, params, Idoms.class);
 	}
-
+	@Override
+	public ArrayList<Idoms> findIdomsbySortid(int sortid) throws SQLException {
+		String sql = "select  id idomsid, name idomsname,sort sort, video video, img img, descri_ch descri_ch, descri_py descri_py,story_ch story_ch, story_py story_py from idoms where sort = ?";
+		Object[] params = {sortid};
+		return findObjs(sql, params,  Idoms.class);
+	}
 }

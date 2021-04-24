@@ -1,5 +1,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.net.URLEncoder"%>
+<%@page import="chengyu.utils.DAOFactory"%>
+<%@page import="chengyu.bean.Sort"%>
+<%@page import="chengyu.bean.Idoms"%>
+<%@page import="chengyu.dao.*"%>
+<%@page import="chengyu.utils.*"%>
 <%@page import="java.lang.Math"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -42,12 +47,12 @@
 }
 ul li {
     display: block;
-    margin: 0;
+    margin: 5px;
     padding: 0;
     text-align: -webkit-match-parent;
 }
 ul li a{
-	color:black;
+	color:#FF7978;
 	font-size:16px;
 	font-weight:bold;
 	font-family:'youyuan';
@@ -100,25 +105,23 @@ ul li a{
 		<div class="container" style="margin-top: 100px;width:20%;float:left;" >
 	      <nav class="containerleft">
 	      <ul class="subcategories">   
-	      <li style="font-size:30px;color:#006439;font-family:'youyuan'">分类</li>
+	      <li style="font-size:30px;color:#006439;font-family:'youyuan';font-weight:bold;">分类</li>
 	     	</br>
-	     	<button class="dashed thin">神话故事成语</button>
+	     	<!-- <button class="dashed thin">神话故事成语</button> -->
 	  <%
 	        
-	      //  CategoryDAO cgdao = (CategoryDAO) DAOFactory.newInstance("CategoryDAO");
-	       // ArrayList<Category> arr = cgdao.findCategorys();	
+	        SortDAO cgdao = (SortDAO) DAOFactory.newInstance("SortDAO");
+	        ArrayList<Sort> arr = cgdao.findSorts();	
 	        /* System.out.println("哈哈哈哈哈");
 	        System.out.println(arr); */
-	      //  for(Category category:arr) {	
-	       //   out.println("<li>~");
-	          /* System.out.println(category.getCategoryid());
-	          System.out.println(category.getCategoryname()); */
-	       //   out.println(" <a onclick=\"return linkClick(this)\" id=\"side_menu_modern_mixology\" href=\"category.jsp?categoryid="+category.getCategoryid()+"\">");
-	       //   out.println(category.getCategoryname());
-	       //   out.println("	</a>");
-	        //  out.println("</li>"); 
-	        //  out.println("</br>");
-	      //  }
+	       for(Sort sort:arr) {	
+	          out.println("<li>");
+	          out.println(" <a class=\"dashed thin\" onclick=\"return linkClick(this)\" id=\"side_menu_modern_mixology\" href=\"category.jsp?categoryid="+sort.getSortid()+"\">");
+	          out.println(sort.getSortname());
+	         out.println("	</a>");
+	          out.println("</li>"); 
+	          out.println("</br>");
+	       }
 	       %> 
 	      </ul>
 		</nav>
@@ -166,42 +169,47 @@ ul li a{
 	  
 	  <div class="container" style="width:80%;">
 	  <%	 	
-	  /*	DishDAO dishdao = (DishDAO) DAOFactory.newInstance("DishDAO");
+	  	IdomsDAO dishdao = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
 	  	String cgn;
-	  	ArrayList<Dish> dishes;
-	  	if(request.getParameter("categoryid")==null){
-	  		dishes=dishdao.findDishbyCategoryid(1);
-	  		cgn=cgdao.findCategory(1).getCategoryname();
+	  	ArrayList<Idoms> dishes;
+	  	if(request.getParameter("idomsid")==null){
+	  		dishes=dishdao.findIdomsbySortid(1);
+	  		cgn=cgdao.findSort(1).getSortname();
 	  	}
 	  	else{
-	  		dishes = dishdao.findDishbyCategoryid(Integer.parseInt(request.getParameter("categoryid")));
-	  		cgn=cgdao.findCategory(Integer.parseInt(request.getParameter("categoryid"))).getCategoryname();
+	  		dishes = dishdao.findIdomsbySortid(Integer.parseInt(request.getParameter("categoryid")));
+	  		cgn=cgdao.findSort(Integer.parseInt(request.getParameter("categoryid"))).getSortname();
 	  	}
 	  	//System.out.println(request.getParameter("categoryid")); 
 	  	out.println("<h2 class=\"caption\">");
 	  	//cgn=URLEncoder.encode(cgn,"UTF-8");
 	  	 out.println(cgn);
 	  	 out.println("</h2>");
- 	        for(Dish dish:dishes) {	
+ 	        for(Idoms dish:dishes) {	
  	        	out.println("<div class=\"col-sm-3\">");
  	        	out.println("<div class=\"product-image-wrapper\">");
  	        	out.println("<div class=\"productinfo text-center\">");
- 	        	out.println("<a  href=\"action?actiontype=detail&dishid="+dish.getDishid()+"\"><img src="+dish.getImgurl()+"  width=\"256px\" height=\"256px\"></a>	");												
- 	        	out.println("<h2>¥"+dish.getPrice()+"</h2>");
- 	        	out.println("<a href=\"action?actiontype=detail&dishid="+dish.getDishid()+"\"><p>"+dish.getDishname()+"</p></a>");
- 	        	out.println("<a href=\"action?actiontype=detail&dishid="+dish.getDishid()+"\" class=\"btn btn-default add-to-cart\"><i class=\"fa fa-eye\"></i>详情</a>");
- 	        	out.println("  ");
- 	        	out.println("<a href=\"action?actiontype=addone&dishid="+dish.getDishid()+"\" class=\"btn btn-default add-to-cart\"><i class=\"fa fa-shopping-cart\"></i>加购</a>");
+ 	        	out.println("<a  href=\"action?actiontype=detail&dishid="+dish.getIdomsid()+"\"><img src="+dish.getImg() +"  width=\"256px\" height=\"256px\"></a>	");												
+ 	        	out.println("<form>");
+ 	        	out.println(" <select>");
+ 	        			out.println("<option selected=selected>请选择正确的成语</option>");
+ 	        					out.println(" <option>艾欧尼亚</option>");
+ 	        							out.println(" <option>黑色玫瑰</option>");
+ 	        									out.println("  <option>比尔吉沃特</option>");
+ 	        											out.println("  <option>弗雷尔卓德</option>");
+ 	        													out.println(" </select>");
+ 	        															out.println(" <button  class=\"btn btn-info waves-effect waves-light\">确定</button>      ");
+ 	        																	out.println("</form>");
  	        	out.println("</div>");
  	        	out.println("</div>");
  	        	out.println("</div>");
- 	        	 out.println("<li>");
+ 	        	/*  out.println("<li>");
 	          out.println("<a id=\"menu-product-related-caramel-espresso-frappuccino\" href=\"action?actiontype=detail&dishid="+dish.getDishid()+"\">");
 	          out.println("<div class=\"preview circle\" style=\"background-image: url(&quot;"+dish.getImgurl()+";)\"></div>");
 	          out.println("<strong>"+dish.getDishname()+"</strong>");
 	          out.println("</a>");
-	          out.println("</li>"); 
-	        }  */
+	          out.println("</li>");  */
+	        }  
 	       
        %>
 	</div>  

@@ -10,6 +10,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import chengyu.bean.Idoms;
 import chengyu.utils.JDBCUtils;
 
 public class baseDAO {
@@ -177,5 +178,10 @@ public class baseDAO {
 				e.printStackTrace();
 		}
 		return count;
+	}
+
+	public ArrayList<Idoms> findItomsbySortid(int sortid) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

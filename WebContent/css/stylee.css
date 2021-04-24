@@ -28,7 +28,7 @@ html h2, body h2 {
   color: #f37841;
   font-size: 3rem;
 }
-html section button, body section button {
+html section a, body section a {
   -webkit-align-self: center;
       -ms-flex-item-align: center;
           align-self: center;
@@ -51,10 +51,10 @@ html section button, body section button {
   border-bottom-left-radius:15px 255px;
   */
 }
-html section button:hover, body section button:hover {
+html section a:hover, body section a:hover {
   box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.3);
 }
-html section button.dashed.thin, body section button.dashed.thin {
+html section a.dashed.thin, body section a.dashed.thin {
   border: dashed 2px #f37841;
 }
 /*html section button.lined.thick, body section button.lined.thick {

@@ -14,7 +14,7 @@ public class Sort {
 	public String getSortname() {
 		return sortname;
 	}
-	public void setSortid(String sortname) {
+	public void setSortname(String sortname) {
 		this.sortname = sortname;
 	}
 }
