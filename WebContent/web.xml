@@ -8,15 +8,15 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>LoginControl</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.LoginControl</servlet-class>
+    <servlet-class>chengyu.action.LoginControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginControl</servlet-name>
-    <url-pattern>/consumer/LoginControl</url-pattern>
+    <url-pattern>/pages/LoginControl</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>llogin</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.LoginControl</servlet-class>
+    <servlet-class>chengyu.action.loginControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>llogin</servlet-name>
@@ -24,7 +24,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>modifyCusControl</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.CustomerModifyControl</servlet-class>
+    <servlet-class>chengyu.action.CustomerModifyControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>modifyCusControl</servlet-name>
@@ -32,7 +32,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>register</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.RegisterControl</servlet-class>
+    <servlet-class>chengyu.action.RegisterControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>register</servlet-name>
@@ -40,7 +40,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>action</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.ActionControl</servlet-class>
+    <servlet-class>chengyu.action.ActionControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>action</servlet-name>
@@ -48,31 +48,15 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>aaction</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.ActionControl</servlet-class>
+    <servlet-class>chengyu.action.ActionControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>aaction</servlet-name>
     <url-pattern>/admin/aaction</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>OrderAdd</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.OrderAddControl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>OrderAdd</servlet-name>
-    <url-pattern>/consumer/OrderAdd</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>CommentAdd</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.CommentAddControl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CommentAdd</servlet-name>
-    <url-pattern>/consumer/CommentAdd</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>dishModify</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.DishModifyControl</servlet-class>
+    <servlet-class>chengyu.action.DishModifyControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>dishModify</servlet-name>
@@ -80,7 +64,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>dishAdd</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.DishAddControl</servlet-class>
+    <servlet-class>chengyu.action.DishAddControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>dishAdd</servlet-name>
@@ -88,31 +72,15 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>categoryAdd</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.CategoryAddControl</servlet-class>
+    <servlet-class>chengyu.action.CategoryAddControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>categoryAdd</servlet-name>
     <url-pattern>/admin/categoryAdd</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>orderModify</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.OrderModifyControl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>orderModify</servlet-name>
-    <url-pattern>/admin/orderModify</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>restaurantAdd</servlet-name>
-    <servlet-class>com.cugb.javaee.starbucks.action.RestaurantAddControl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>restaurantAdd</servlet-name>
-    <url-pattern>/admin/restaurantAdd</url-pattern>
-  </servlet-mapping>
   <filter>
     <filter-name>CharFilter</filter-name>
-    <filter-class>com.cugb.javaee.starbucks.utils.CharsetFilter</filter-class>
+    <filter-class>chengyu.utils.CharsetFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>CharFilter</filter-name>

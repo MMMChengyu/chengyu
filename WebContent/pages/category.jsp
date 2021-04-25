@@ -4,6 +4,7 @@
 <%@page import="chengyu.bean.Sort"%>
 <%@page import="chengyu.bean.Idoms"%>
 <%@page import="chengyu.dao.*"%>
+ <%@page import="chengyu.bean.user"%>
 <%@page import="chengyu.utils.*"%>
 <%@page import="java.lang.Math"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -88,9 +89,18 @@ ul li a{
                   <a class="nav-link" href="admission.html"> 学习分析 </a>
                 </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href="login.jsp"> 登录 </a>
-                </li>
+                <li>
+					<%
+									user cuss = (user) session.getAttribute("loginuser");
+									if(cuss == null){
+										out.println("<li><a href=\"login.jsp\">请登录</a></li>");
+									}
+									else{
+										out.println("<li><a href=\"\"></i>欢迎："+cuss.getUsername()+"</a></li>");
+										out.println("<li><a href=\"action?actiontype=logOut\"></i>注销</a></li>");
+									}
+								%>
+								</li>
 
               </ul>
             </div>
@@ -116,8 +126,8 @@ ul li a{
 	        System.out.println(arr); */
 	       for(Sort sort:arr) {	
 	          out.println("<li>");
-	          out.println(" <a class=\"dashed thin\" onclick=\"return linkClick(this)\" id=\"side_menu_modern_mixology\" href=\"category.jsp?categoryid="+sort.getSortid()+"\">");
-	          out.println(sort.getSortname());
+	          out.println(" <a class=\"dashed thin\" onclick=\"return linkClick(this)\" id=\"side_menu_modern_mixology\" href=\"category.jsp?categoryid="+sort.getid()+"\">");
+	          out.println(sort.getname());
 	         out.println("	</a>");
 	          out.println("</li>"); 
 	          out.println("</br>");
@@ -172,13 +182,13 @@ ul li a{
 	  	IdomsDAO dishdao = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
 	  	String cgn;
 	  	ArrayList<Idoms> dishes;
-	  	if(request.getParameter("idomsid")==null){
+	  	if(request.getParameter("categoryid")==null){
 	  		dishes=dishdao.findIdomsbySortid(1);
-	  		cgn=cgdao.findSort(1).getSortname();
+	  		cgn=cgdao.findSort(1).getname();
 	  	}
 	  	else{
 	  		dishes = dishdao.findIdomsbySortid(Integer.parseInt(request.getParameter("categoryid")));
-	  		cgn=cgdao.findSort(Integer.parseInt(request.getParameter("categoryid"))).getSortname();
+	  		cgn=cgdao.findSort(Integer.parseInt(request.getParameter("categoryid"))).getname();
 	  	}
 	  	//System.out.println(request.getParameter("categoryid")); 
 	  	out.println("<h2 class=\"caption\">");
@@ -189,7 +199,7 @@ ul li a{
  	        	out.println("<div class=\"col-sm-3\">");
  	        	out.println("<div class=\"product-image-wrapper\">");
  	        	out.println("<div class=\"productinfo text-center\">");
- 	        	out.println("<a  href=\"action?actiontype=detail&dishid="+dish.getIdomsid()+"\"><img src="+dish.getImg() +"  width=\"256px\" height=\"256px\"></a>	");												
+ 	        	out.println("<a  href=\"action?actiontype=detail&dishid="+dish.getid()+"\"><img src=../images/chengyu/"+dish.getImg() +"  width=\"250px\" height=\"250px\"></a>	");												
  	        	out.println("<form>");
  	        	out.println(" <select>");
  	        			out.println("<option selected=selected>请选择正确的成语</option>");

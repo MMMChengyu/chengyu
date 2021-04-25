@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
+ <%@page import="chengyu.bean.user"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -67,7 +68,7 @@
 		}
 	function refresh() {  
         //IE 存在缓存，需要 new Date () 实现更换路径的作用  
-        document.getElementById("imagee").src="../image.jsp?"+new Date().getTime();  
+        document.getElementById("imagee").src="image.jsp?"+new Date().getTime();  
     }  
 	</script>
 	<style>
@@ -110,9 +111,19 @@
                   <a class="nav-link" href="admission.html"> 学习分析 </a>
                 </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href="login.jsp"> 登录 </a>
-                </li>
+               
+                <li>
+					<%
+									user cuss = (user) session.getAttribute("loginuser");
+									if(cuss == null){
+										out.println("<li><a href=\"login.jsp\">请登录</a></li>");
+									}
+									else{
+										out.println("<li><a href=\"\"></i>欢迎："+cuss.getUsername()+"</a></li>");
+										out.println("<li><a href=\"action?actiontype=logOut\"></i>注销</a></li>");
+									}
+								%>
+								</li>
 
               </ul>
             </div>
@@ -124,7 +135,7 @@
   </div>
   <!-- end header section -->
 
-    <section id="form" style="margin-top:0px; margin-bottom:120px"><!--form-->
+    <section id="form" style="margin-top:60px; margin-bottom:120px"><!--form-->
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-1">
@@ -165,7 +176,7 @@
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>
-      Copyright &copy; 2020.Company name All rights reserved.
+      Copyright &copy; 2021.Company name All rights reserved.
     </p>
   </section>
   <!-- footer section -->
