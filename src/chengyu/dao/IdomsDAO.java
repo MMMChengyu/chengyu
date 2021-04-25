@@ -14,6 +14,8 @@ public interface IdomsDAO {
 	
 	ArrayList<Idoms> findIdoms(String sql, Object[] params);
 	
+	public ArrayList<Idoms> findthreeIdoms(int idomsid) throws SQLException;
+	
 	public int getTotalIdoms(String strsql);
 
 	ArrayList<Idoms> findIdomsbySortid(int sortid) throws SQLException;

@@ -2,6 +2,8 @@
 <%@page import="chengyu.utils.PageModel"%>
 <%@page import="chengyu.dao.SortDAO"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Collections"%>
 <%@page import="chengyu.utils.DAOFactory"%>
 <%@page import="chengyu.dao.IdomsDAO"%>
 <%@page import="chengyu.biz.IdomsService"%>
@@ -36,7 +38,7 @@ request.setAttribute("idomslist2", pagemodel.getList().subList(3, 6));
 request.setAttribute("idomslist3", pagemodel.getList().subList(6, 9));
 request.setAttribute("idomslist4", pagemodel.getList().subList(9,12));
 request.setAttribute("pageModel", pagemodel); 
-
+int count =0;
 %>    
 
 
@@ -81,30 +83,36 @@ request.setAttribute("pageModel", pagemodel);
 			
 			   <div class="container">
                 <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4 ">
-                	<c:forEach items="${requestScope.idomslist}" var="currentidoms"
-									varStatus="status">
-					<li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/${currentidoms.getImg()}" alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                                	<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>	
-					</c:forEach>
+			        <%
+			        	List<Idoms> showIdoms = pagemodel.getList().subList(0, 3);
+			        	for(Idoms idoms:showIdoms){
+			        		out.println("<li>");
+			        		out.println(" <div class=\"widget widget-article widget-shadow\">");
+			        		out.println("<div class=\"widget-header cover overlay overlay-hover\">");
+			        		out.println(" <img class=\"cover-image overlay-scale\" src=\"../images/chengyu/"+idoms.getImg()+"\">");
+			        		out.println("</div>");
+			        		out.println("<div class=\"widget-body\">");
+			        		out.println("<div class=\"widget-body-footer\">");
+			        		out.println("<form>");
+			        		out.println("<select>");
+			        		IdomsDAO idomsDAO = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
+				        	ArrayList<Idoms> myidoms = idomsDAO.findthreeIdoms(idoms.getid());
+				        	myidoms.add(idoms);
+				        	Collections.shuffle(myidoms);
+				         	out.println("<option selected=selected>请选择正确的成语</option>");
+				         	for(int i=0;i<myidoms.size();i++){
+				         		out.println(" <option>"+myidoms.get(i).getname()+"</option>");
+				         	}
+							out.println("</select>");
+							
+							out.println("<button  class=\"btn btn-info waves-effect waves-light\">确定</button> ");
+			        		out.println("</form>");
+			        		out.println(" </div>");
+			        		out.println(" </div>");
+			        		out.println(" </div>");
+			        		out.println("</li>");
+		 				 	}
+			        %>			         
                 </ul>
             </div>
 			
@@ -124,30 +132,36 @@ request.setAttribute("pageModel", pagemodel);
 
  		<div class="container">
                 <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4 " data-scale=''>
-                  <c:forEach items="${requestScope.idomslist2}" var="currentidoms"
-									varStatus="status">
-					<li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/${currentidoms.getImg()}" alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                                	<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>	
-					</c:forEach>
+                  <%
+			        	List<Idoms> showIdoms2 = pagemodel.getList().subList(3, 6);
+			        	for(Idoms idoms:showIdoms2){
+			        		out.println("<li>");
+			        		out.println(" <div class=\"widget widget-article widget-shadow\">");
+			        		out.println("<div class=\"widget-header cover overlay overlay-hover\">");
+			        		out.println(" <img class=\"cover-image overlay-scale\" src=\"../images/chengyu/"+idoms.getImg()+"\">");
+			        		out.println("</div>");
+			        		out.println("<div class=\"widget-body\">");
+			        		out.println("<div class=\"widget-body-footer\">");
+			        		out.println("<form>");
+			        		out.println("<select>");
+			        		IdomsDAO idomsDAO = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
+				        	ArrayList<Idoms> myidoms = idomsDAO.findthreeIdoms(idoms.getid());
+				        	myidoms.add(idoms);
+				        	Collections.shuffle(myidoms);
+				         	out.println("<option selected=selected>请选择正确的成语</option>");
+				         	for(int i=0;i<myidoms.size();i++){
+				         		out.println(" <option>"+myidoms.get(i).getname()+"</option>");
+				         	}
+							out.println("</select>");
+							
+							out.println("<button  class=\"btn btn-info waves-effect waves-light\">确定</button> ");
+			        		out.println("</form>");
+			        		out.println(" </div>");
+			        		out.println(" </div>");
+			        		out.println(" </div>");
+			        		out.println("</li>");
+		 				 	}
+			        %>			         
                 </ul>
             </div>
 
@@ -178,30 +192,38 @@ request.setAttribute("pageModel", pagemodel);
             
             	<div class="container">
                 <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4 " data-scale=''>
-                   <c:forEach items="${requestScope.idomslist3}" var="currentidoms"
-									varStatus="status">
-					<li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/${currentidoms.getImg()}" alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                                	<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>	
-					</c:forEach>
+                    <%
+			        	List<Idoms> showIdoms3 = pagemodel.getList().subList(6, 9);
+			        	for(Idoms idoms:showIdoms3){
+			        		out.println("<li>");
+			        		out.println(" <div class=\"widget widget-article widget-shadow\">");
+			        		out.println("<div class=\"widget-header cover overlay overlay-hover\">");
+			        		out.println(" <img class=\"cover-image overlay-scale\" src=\"../images/chengyu/"+idoms.getImg()+"\">");
+			        		out.println("</div>");
+			        		out.println("<div class=\"widget-body\">");
+			        		out.println("<div class=\"widget-body-footer\">");
+			        		//out.println("<form onSubmit=\"return checkAnswer("+count+","+idoms.getname()+")\">");
+			        		out.println("<form>");
+			        		out.println("<select>");
+			        		count++;
+			        		IdomsDAO idomsDAO = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
+				        	ArrayList<Idoms> myidoms = idomsDAO.findthreeIdoms(idoms.getid());
+				        	myidoms.add(idoms);
+				        	Collections.shuffle(myidoms);
+				         	out.println("<option selected=selected>请选择正确的成语</option>");
+				         	for(int i=0;i<myidoms.size();i++){
+				         		out.println(" <option value=\""+myidoms.get(i).getname()+"\">"+myidoms.get(i).getname()+"</option>");
+				         	}
+							out.println("</select>");
+							
+							out.println("<button  class=\"btn btn-info waves-effect waves-light\">确定</button> ");
+			        		out.println("</form>");
+			        		out.println(" </div>");
+			        		out.println(" </div>");
+			        		out.println(" </div>");
+			        		out.println("</li>");
+		 				 	}
+			        %>			        
                 </ul>
             </div>
             
@@ -221,30 +243,36 @@ request.setAttribute("pageModel", pagemodel);
 
 <div class="container">
                 <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4 " data-scale=''>
-                    <c:forEach items="${requestScope.idomslist4}" var="currentidoms"
-									varStatus="status">
-					<li class="">
-                        <div class="widget widget-article widget-shadow">
-                            <div class="widget-header cover overlay overlay-hover">
-                                <img class="cover-image overlay-scale" src="../images/chengyu/${currentidoms.getImg()}" alt="">
-                            </div>
-                            <div class="widget-body">
-                                <div class="widget-body-footer">
-                                	<form>
-									        <select>
-									        	<option selected=selected>请选择正确的成语</option>
-									            <option>艾欧尼亚</option>
-									            <option>黑色玫瑰</option>
-									            <option>比尔吉沃特</option>
-									            <option>弗雷尔卓德</option>
-									        </select>
-									        <button  class="btn btn-info waves-effect waves-light">确定</button>      
-										</form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>	
-					</c:forEach>
+                                     <%
+			        	List<Idoms> showIdoms4 = pagemodel.getList().subList(9, 12);
+			        	for(Idoms idoms:showIdoms4){
+			        		out.println("<li>");
+			        		out.println(" <div class=\"widget widget-article widget-shadow\">");
+			        		out.println("<div class=\"widget-header cover overlay overlay-hover\">");
+			        		out.println(" <img class=\"cover-image overlay-scale\" src=\"../images/chengyu/"+idoms.getImg()+"\">");
+			        		out.println("</div>");
+			        		out.println("<div class=\"widget-body\">");
+			        		out.println("<div class=\"widget-body-footer\">");
+			        		out.println("<form>");
+			        		out.println("<select>");
+			        		IdomsDAO idomsDAO = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
+				        	ArrayList<Idoms> myidoms = idomsDAO.findthreeIdoms(idoms.getid());
+				        	myidoms.add(idoms);
+				        	Collections.shuffle(myidoms);
+				         	out.println("<option selected=selected>请选择正确的成语</option>");
+				         	for(int i=0;i<myidoms.size();i++){
+				         		out.println(" <option>"+myidoms.get(i).getname()+"</option>");
+				         	}
+							out.println("</select>");
+							
+							out.println("<button  class=\"btn btn-info waves-effect waves-light\">确定</button> ");
+			        		out.println("</form>");
+			        		out.println(" </div>");
+			        		out.println(" </div>");
+			        		out.println(" </div>");
+			        		out.println("</li>");
+		 				 	}
+			        %>		
                 </ul>
             </div>
 
@@ -280,5 +308,15 @@ request.setAttribute("pageModel", pagemodel);
 
   <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="../js/bootstrap.js"></script>
+  <script language="javascript">
+  function checkUserInfo(type,name) {
+	  let value = document.querySelectorAll("form")[type].value();
+	  if(value == name){
+		  alert('回答正确！');
+	  }else{
+		  alert('回答错误');
+	  }
+  }
+  </script>
 </body>
 </html>

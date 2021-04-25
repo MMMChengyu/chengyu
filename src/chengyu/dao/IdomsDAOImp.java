@@ -43,4 +43,23 @@ public class IdomsDAOImp extends baseDAO implements IdomsDAO {
 		Object[] params = {sortid};
 		return findObjs(sql, params,  Idoms.class);
 	}
+
+	@Override
+	public ArrayList<Idoms> findthreeIdoms(int idomsid) throws SQLException {
+		int random = (int) (Math.random()*(getTotalIdoms("select * from idoms")-3));
+		while(random == idomsid) {
+			random = (int) (Math.random()*(getTotalIdoms("select * from idoms")-3));
+		}
+		String sql1 = "select id, name, sort  Sort, video  Video, img Img, descri_ch Descri_ch , descri_py Descri_py ,story_ch Story_ch, story_py Story_py from idoms where id = ?";
+		String sql2 = "select id, name, sort  Sort, video  Video, img Img, descri_ch Descri_ch , descri_py Descri_py ,story_ch Story_ch, story_py Story_py from idoms where id = ?";
+		String sql3 = "select id, name, sort  Sort, video  Video, img Img, descri_ch Descri_ch , descri_py Descri_py ,story_ch Story_ch, story_py Story_py from idoms where id = ?";
+		Object[] params1 = {random};
+		Object[] params2 = {random+1};
+		Object[] params3 = {random+2};
+		ArrayList<Idoms> myidoms= new ArrayList<Idoms>(3);
+		myidoms.add((Idoms) findObj(sql1, params1,  Idoms.class));
+		myidoms.add((Idoms) findObj(sql2, params2,  Idoms.class));
+		myidoms.add((Idoms) findObj(sql3, params3,  Idoms.class));
+		return myidoms;
+	}
 }
