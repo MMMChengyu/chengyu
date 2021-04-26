@@ -22,6 +22,11 @@
 
  <link rel="stylesheet" href="../css/css-circular-prog-bar.css">
 <title>Insert title here</title>
+ <style>
+ ul li{
+ font-size:16px;
+ }
+ </style>
 </head>
 <body>
 <div class="top_container">
