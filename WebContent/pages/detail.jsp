@@ -1,13 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@page import="chengyu.bean.user"%>
+     <%@page import="chengyu.bean.Users"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="gb2312">
+<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>博学强记——成语详情</title>
-<link rel="stylesheet" type="text/css" href="../css/daohang.css" />
-<link href="../css/font_daohang.css" rel="stylesheet" type="text/css">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+     <link rel="stylesheet" href="../css/css-circular-prog-bar.css">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prettyPhoto.css" rel="stylesheet">
+    <link href="../css/price-range.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+	<link href="../css/main.css" rel="stylesheet">
+	<link href="../css/responsive.css" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
+ <link href="../css/style.css" rel="stylesheet" />
+ <style>
+ .m{
+	    width: 100%;
+    margin-top: -50px;
+    overflow: hidden;
+}
+.shiyi{
+	font-size:28px;
+	font-family:'youyuan';
+	margin-top:40px;
+	    margin-bottom: 20px;
+	color:orange;
+}
+.wrapper{
+	margin-left:250px;
+	margin-right:200px;
+}
+.chengyu{
+	    font-size: 38px;
+    font-family: 'sthupo';
+    text-align: center;
+    color: #0D98D1;
+    letter-spacing: 10px;
+}
+.content{
+margin-left:250px;
+}
+
+ 	ruby span{
+ 	    display: inline-block;
+    font-family: 'stcaiyun';
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: black;
+ 	}
+ 	
+ 	rt {
+    	margin: 0 2px 0;
+    	color:black;
+    	font-size:10px;
+	}
+video:focus {
+  outline:none;
+}
+#leftt{
+	width: 55%;
+    margin-left: 200px;
+    float: left;
+}
+#rightt{
+    width: 20%;
+    margin-top: 100px;
+    float: right;
+}
+.tuijain{
+font-size:28px;
+	font-family:'youyuan';
+	color:orange;
+}
+ </style>
 </head>
 <body>
 
@@ -16,7 +87,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="index.jsp">
             <span>
               成语趣味学习平台
             </span>
@@ -42,7 +113,7 @@
 
                 <li>
 					<%
-									user cuss = (user) session.getAttribute("loginuser");
+					Users cuss = (Users) session.getAttribute("loginuser");
 									if(cuss == null){
 										out.println("<li><a href=\"login.jsp\">请登录</a></li>");
 									}
@@ -62,13 +133,117 @@
 
   </div>
   <!-- end header section -->
+ <p class="chengyu">   八仙过海</p>
+				  <section class="m">	
+				   <div  id="leftt">
+							<video width="700" height="480" src="../video/八仙过海.mp4" controls="controls"></video>
+						</div>
+				<div id="rightt">
+				<h3  class="tuijain">推荐成语</h3>
+				<ul>
+				<li>
+				hskjda
+				</li>
+				<li>
+				hskjda
+				</li>
+				<li>
+				hskjda
+				</li><li>
+				hskjda
+				</li>
+				</ul>
+				</div>
+					</section>
+					<div class="wrapper">
+  <h3  class="shiyi">·成语释义</h3>
+  <script>
+
+    var reg = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/;
+    let duanluo = "表示向人认错赔罪       。   出自《史记・廉颇蔺相如列传》*啦啦啦啦啦";
+    let a = duanluo.replace(/\s*/g, "");
+    let pinyin = "biǎo shì xiàng rén rèn cuò péi zuì             。 chū zì 《 shǐ jì ・ lián pō lìn xiàng rú liè chuán 》 * la la la la la "
+    let b = pinyin.split(' ').filter(function(item) {
+      return item.length > 0;
+    });
+    let p = document.querySelector(".wrapper");
+    var str = '';
+    // var flag = false;
+    let myruby = document.createElement("ruby");
+    let count = 0;
+    for (let i = 0; i < a.length; i++) {
+      // if (!flag) {
+      //   flag = true;
+      // }
+      if (a[i] === '*') {
+        //记录一个ruby,并清除
+        myruby.innerHTML = str;
+        p.appendChild(myruby);
+        p.innerHTML += "<br>"
+        // count++;
+        str = "";
+        // flag = false;
+        continue;
+      }
+      if (i < b.length) {
+        if (reg.test(b[i])) {
+          b[i] = " ";
+        }
+        str += "<span>"+ a[i] +"</span>"+ "<rt>" + b[i] + "</rt>"
+      } else {
+        str += a[i]
+      }
+
+    }
+    myruby.innerHTML = str;
+    p.appendChild(myruby);
+
+  </script>
   
-  
-  
-  
-  
-  
-  
+  <h3  class="shiyi">·成语故事</h3>
+  <script>
+
+    var reg = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/;
+    let duanluo = "表示向人认错赔罪       。   出自《史记・廉颇蔺相如列传》*啦啦啦啦啦";
+    let a = duanluo.replace(/\s*/g, "");
+    let pinyin = "biǎo shì xiàng rén rèn cuò péi zuì             。 chū zì 《 shǐ jì ・ lián pō lìn xiàng rú liè chuán 》 * la la la la la "
+    let b = pinyin.split(' ').filter(function(item) {
+      return item.length > 0;
+    });
+    let q = document.querySelector(".wrapper");
+    var str = '';
+    // var flag = false;
+    let myruby = document.createElement("ruby");
+    let count = 0;
+    for (let i = 0; i < a.length; i++) {
+      // if (!flag) {
+      //   flag = true;
+      // }
+      if (a[i] === '*') {
+        //记录一个ruby,并清除
+        myruby.innerHTML = str;
+        q.appendChild(myruby);
+        q.innerHTML += "<br>"
+        // count++;
+        str = "";
+        // flag = false;
+        continue;
+      }
+      if (i < b.length) {
+        if (reg.test(b[i])) {
+          b[i] = " ";
+        }
+        str += "<span>"+ a[i] +"</span>"+ "<rt>" + b[i] + "</rt>"
+      } else {
+        str += a[i]
+      }
+
+    }
+    myruby.innerHTML = str;
+    q.appendChild(myruby);
+
+  </script>
+  </div>
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>

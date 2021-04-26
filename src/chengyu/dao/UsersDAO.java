@@ -3,7 +3,7 @@ package chengyu.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import chengyu.bean.user;
+import chengyu.bean.Users;
 
 
 
@@ -15,14 +15,14 @@ import chengyu.bean.user;
  * 4.查询所有用户信息。
  *
  */
-public interface userDAO {
+public interface UsersDAO {
 	 /**
      * 增加用户信息。 
      * @param user 包含用户信息的对象。
      * @return 增加的用户的数量。
      * @throws SQLException 执行操作发生任何异常时。
      */
-    public int adduser(user user) throws SQLException;
+    public int adduser(Users user) throws SQLException;
     
     /**
      * 删除指定的用户信息。
@@ -39,7 +39,7 @@ public interface userDAO {
      * @return 被修改的用户的数量。
      * @throws SQLException 执行操作发生任何异常时。
      */
-    public int modifyuser(user user) throws SQLException;
+    public int modifyuser(Users user) throws SQLException;
     
     /**
      * 查询所有的用户信息。
@@ -54,6 +54,6 @@ public interface userDAO {
      * @return 该用户的所有信息
      * @throws SQLException 执行操作发生任何异常时。
      */
-    public user finduser(String string) throws SQLException;
+    public Users finduser(String string) throws SQLException;
 }
 

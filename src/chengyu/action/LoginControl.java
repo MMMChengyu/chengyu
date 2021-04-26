@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import chengyu.bean.user;
-import chengyu.biz.userService;
+import chengyu.bean.Users;
+import chengyu.biz.UsersService;
 import chengyu.utils.ConfigFactory;
 
 /**
@@ -42,18 +42,19 @@ public class LoginControl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request,response);
+		
 		String username = request.getParameter("loginName");
 		String password = request.getParameter("loginPass");
 //		HttpSession session = request.getSession(true);
 //		String code=session.getAttribute("code").toString();
 //		System.out.println(code);
 		String inputcode=request.getParameter("code").toLowerCase();
-		user loginuser = new user();
+		Users loginuser = new Users();
 		loginuser.setUsername(username);
 		loginuser.setPassword(password);
 		
 		//数据库验证
-		userService cService = new userService();
+		UsersService cService = new UsersService();
 		try {
 			HttpSession session = request.getSession(true);
 			String code=session.getAttribute("code").toString().toLowerCase();
@@ -61,28 +62,23 @@ public class LoginControl extends HttpServlet {
 			System.out.println(inputcode);
 			if(inputcode.equals(code))
 			{
-//				if (username.equals(adminUsername) && password.equals(adminPassword)) {
-//					//管理员 验证通过
-//					session.setAttribute("loginuser", loginuser);
-//					session.setAttribute("admin", true);
-//					request.getRequestDispatcher("adminIndex.jsp").forward(request, response);
-//				} else 
-				if (cService.validateuser(loginuser)) {
-					//普通用户 验证通过 
+				if (cService.validateUsers(loginuser)) {
+					//普通用户 验证通过
 					session.setAttribute("loginuser", loginuser);
-					session.setAttribute("admin", false);
 					request.getRequestDispatcher("index.jsp").forward(request, response);
 				}
 				else {
 					//否则重新登录
 					PrintWriter out = response.getWriter();
 					String a = URLEncoder.encode("用户名或密码错误，请重新登录！", "UTF-8");  
-					out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='login.jsp'</script>");
+					if (username.equals(username) )
+						out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='login.jsp'</script>");
 				}
 			}else {
 				//否则重新登录
 				PrintWriter out = response.getWriter();
 				String a = URLEncoder.encode("验证码错误，请重新登录！", "UTF-8");  
+				if (username.equals(username) )
 				out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='login.jsp'</script>");
 			}
 			

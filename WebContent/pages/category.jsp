@@ -4,7 +4,7 @@
 <%@page import="chengyu.bean.Sort"%>
 <%@page import="chengyu.bean.Idoms"%>
 <%@page import="chengyu.dao.*"%>
- <%@page import="chengyu.bean.user"%>
+ <%@page import="chengyu.bean.Users"%>
 <%@page import="chengyu.utils.*"%>
 <%@page import="java.lang.Math"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -65,7 +65,7 @@ ul li a{
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="index.jsp">
             <span>
               成语趣味学习平台
             </span>
@@ -91,7 +91,7 @@ ul li a{
 
                 <li>
 					<%
-									user cuss = (user) session.getAttribute("loginuser");
+									Users cuss = (Users) session.getAttribute("loginuser");
 									if(cuss == null){
 										out.println("<li><a href=\"login.jsp\">请登录</a></li>");
 									}

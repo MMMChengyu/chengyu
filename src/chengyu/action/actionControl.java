@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import chengyu.bean.user;
+import chengyu.bean.Users;
 import chengyu.bean.Idoms;
 import chengyu.biz.IdomsService;
 import chengyu.dao.IdomsDAO;

@@ -1,9 +1,13 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
- <%@page import="chengyu.bean.user"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="chengyu.utils.DAOFactory"%>
+<%@page import="chengyu.bean.Idoms"%>
+<%@page import="chengyu.bean.Users"%>
+<%@page import="chengyu.dao.*"%>
+<%@page import="chengyu.utils.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +91,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="index.jsp">
             <span>
               成语趣味学习平台
             </span>
@@ -114,7 +118,7 @@
                
                 <li>
 					<%
-									user cuss = (user) session.getAttribute("loginuser");
+					Users cuss = (Users) session.getAttribute("loginuser");
 									if(cuss == null){
 										out.println("<li><a href=\"login.jsp\">请登录</a></li>");
 									}

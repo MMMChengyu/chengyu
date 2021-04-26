@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@page import="chengyu.bean.user"%>
+    <%@page import="chengyu.bean.Users"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +29,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="index.jsp">
             <span>
 				成语趣味学习平台
             </span>
@@ -52,9 +52,9 @@
                 <li class="nav-item ">
                   <a class="nav-link" href="admission.html">做题分析</a>
                 </li>
-                <li>
+                <li style="margin-top:20px;">
 					<%
-									user cuss = (user) session.getAttribute("loginuser");
+					Users cuss = (Users) session.getAttribute("loginuser");
 									if(cuss == null){
 										out.println("<li><a href=\"login.jsp\">请登录</a></li>");
 									}

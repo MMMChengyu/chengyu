@@ -1,15 +1,15 @@
 package chengyu.bean;
 
-public class user {
-	public String user_name;
+public class Users {
+	public String username;
 	public String password;
 	public String email;
 	
 	public String getUsername() {
-		return user_name;
+		return username;
 	}
 	public void setUsername(String username) {
-		this.user_name = username;
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
