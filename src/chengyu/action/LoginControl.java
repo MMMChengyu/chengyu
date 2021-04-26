@@ -6,7 +6,6 @@ import java.net.URLEncoder;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import chengyu.bean.Users;
 import chengyu.biz.UsersService;
-import chengyu.utils.ConfigFactory;
 
 /**
  * Servlet implementation class LoginContrler
@@ -45,6 +43,8 @@ public class LoginControl extends HttpServlet {
 		
 		String username = request.getParameter("loginName");
 		String password = request.getParameter("loginPass");
+		System.out.println(username);
+		System.out.println(password);
 //		HttpSession session = request.getSession(true);
 //		String code=session.getAttribute("code").toString();
 //		System.out.println(code);
@@ -62,33 +62,38 @@ public class LoginControl extends HttpServlet {
 			System.out.println(inputcode);
 			if(inputcode.equals(code))
 			{
+				System.out.println("1");
+				System.out.print(cService.validateUsers(loginuser));
 				if (cService.validateUsers(loginuser)) {
 					//普通用户 验证通过
 					session.setAttribute("loginuser", loginuser);
+					System.out.println("2");
 					request.getRequestDispatcher("index.jsp").forward(request, response);
 				}
 				else {
 					//否则重新登录
 					PrintWriter out = response.getWriter();
-					String a = URLEncoder.encode("用户名或密码错误，请重新登录！", "UTF-8");  
-					if (username.equals(username) )
+					String a = URLEncoder.encode("用户名或密码错误，请重新登录！", "UTF-8"); 
+					System.out.println("3");
 						out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='login.jsp'</script>");
 				}
 			}else {
 				//否则重新登录
 				PrintWriter out = response.getWriter();
 				String a = URLEncoder.encode("验证码错误，请重新登录！", "UTF-8");  
-				if (username.equals(username) )
 				out.print("<script>alert(decodeURIComponent('"+a+"') );window.location.href='login.jsp'</script>");
 			}
 			
 			
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
+			System.out.print("err");
 			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			System.out.print("err");
 			e.printStackTrace();
+			
 		} 
 	}
 

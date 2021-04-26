@@ -21,17 +21,22 @@ public class UsersService {
 			return true;
 		else return false;
 	}
-	public boolean validateUsers(Users Users) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public boolean validateUsers(Users user) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+
 		UsersDAO UsersDAO = (UsersDAO) DAOFactory.newInstance("UsersDAO");
-		Users cus = UsersDAO.finduser(Users.getUsername());
+		
+		Users cus = UsersDAO.finduser(user.getUsername());
 		if(cus==null)
 		{
+			System.out.print("sasas");
 			return false;
 		}
 		else {
-			if(cus.getPassword().equals(Users.getPassword()))
-			return true;
-		else return false;
+			System.out.print("oooo");
+			if(cus.getPassword().equals(user.getPassword()))
+				return true;
+			else 
+				return false;
 		}
 		
 	}

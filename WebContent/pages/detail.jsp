@@ -26,8 +26,8 @@
     overflow: hidden;
 }
 .shiyi{
-	font-size:28px;
-	font-family:'youyuan';
+	font-size:30px;
+	font-family:'stcaiyun';
 	margin-top:40px;
 	    margin-bottom: 20px;
 	color:orange;
@@ -40,7 +40,7 @@
 	    font-size: 38px;
     font-family: 'sthupo';
     text-align: center;
-    color: #0D98D1;
+    color: "#0D98D1";
     letter-spacing: 10px;
 }
 .content{
@@ -48,10 +48,11 @@ margin-left:250px;
 }
 
  	ruby span{
- 	    display: inline-block;
-    font-family: 'stcaiyun';
+ 	      display: inline-block;
+    font-family: 'fangsong';
+    font-weight: bolder;
     font-size: 18px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: black;
  	}
  	
@@ -64,19 +65,37 @@ video:focus {
   outline:none;
 }
 #leftt{
-	width: 55%;
+	width: 50%;
     margin-left: 200px;
     float: left;
 }
 #rightt{
-    width: 20%;
+    width: 15%;
     margin-top: 100px;
+    margin-right:200px;
     float: right;
+    text-align:center;
 }
 .tuijain{
-font-size:28px;
-	font-family:'youyuan';
-	color:orange;
+font-size: 30px;
+    font-family: 'stcaiyun';
+    margin-bottom: 20px;
+    margin-left: 8px;
+    color: orange;
+}
+.m ul li{
+	width: 100%;
+    height: 35px;
+    line-height: 35px;
+    background: #8FBC8F;
+    color: white;
+    text-align: center;
+    font-family: 'fangsong';
+    font-weight: bolder;
+    font-size: 18px;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    border-radius: 15px 15px 15px 15px;
 }
  </style>
 </head>
@@ -133,30 +152,30 @@ font-size:28px;
 
   </div>
   <!-- end header section -->
- <p class="chengyu">   八仙过海</p>
+ <p class="chengyu"><img src="../images/hu.jpg" width="50px" height="50px">八仙过海<img src="../images/hu.jpg" width="50px" height="50px"></p>
 				  <section class="m">	
 				   <div  id="leftt">
 							<video width="700" height="480" src="../video/八仙过海.mp4" controls="controls"></video>
 						</div>
 				<div id="rightt">
-				<h3  class="tuijain">推荐成语</h3>
+				<h3  class="tuijain"><img src="../images/xiong.jpg" width="40px" height="50px">推荐成语<img src="../images/xiong.jpg" width="40px" height="50px"></h3>
 				<ul>
 				<li>
-				hskjda
+				八仙过海
 				</li>
 				<li>
-				hskjda
+				一鸣惊人
 				</li>
 				<li>
-				hskjda
+				三顾茅庐
 				</li><li>
-				hskjda
+				夸父逐日
 				</li>
 				</ul>
 				</div>
 					</section>
 					<div class="wrapper">
-  <h3  class="shiyi">·成语释义</h3>
+  <h3  class="shiyi"><img src="../images/lu.png" width="50px" height="50px">成语释义</h3>
   <script>
 
     var reg = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/;
@@ -200,49 +219,53 @@ font-size:28px;
 
   </script>
   
-  <h3  class="shiyi">·成语故事</h3>
+  
+  </div>
+  <div class="wrapper mygushi">
+  <h3  class="shiyi"><img src="../images/zhu.jpg" width="50px" height="50px">成语故事</h3>
   <script>
 
-    var reg = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/;
-    let duanluo = "表示向人认错赔罪       。   出自《史记・廉颇蔺相如列传》*啦啦啦啦啦";
-    let a = duanluo.replace(/\s*/g, "");
-    let pinyin = "biǎo shì xiàng rén rèn cuò péi zuì             。 chū zì 《 shǐ jì ・ lián pō lìn xiàng rú liè chuán 》 * la la la la la "
-    let b = pinyin.split(' ').filter(function(item) {
+    var reg2 = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/;
+    let duanluo2 = "表示向人认错赔罪       。   出自《史记・廉颇蔺相如列传》*啦啦啦啦啦";
+    let a2 = duanluo2.replace(/\s*/g, "");
+    let pinyin2 = "biǎo shì xiàng rén rèn cuò péi zuì             。 chū zì 《 shǐ jì ・ lián pō lìn xiàng rú liè chuán 》 * la la la la la "
+    let b2 = pinyin2.split(' ').filter(function(item) {
       return item.length > 0;
     });
-    let q = document.querySelector(".wrapper");
-    var str = '';
+    let q = document.querySelector(".mygushi");
+    var str2 = '';
     // var flag = false;
-    let myruby = document.createElement("ruby");
-    let count = 0;
+    let myruby2 = document.createElement("ruby");
+    let count2 = 0;
     for (let i = 0; i < a.length; i++) {
       // if (!flag) {
       //   flag = true;
       // }
-      if (a[i] === '*') {
+      if (a2[i] === '*') {
         //记录一个ruby,并清除
-        myruby.innerHTML = str;
-        q.appendChild(myruby);
+        myruby2.innerHTML = str2;
+        q.appendChild(myruby2);
         q.innerHTML += "<br>"
         // count++;
-        str = "";
+        str2 = "";
         // flag = false;
         continue;
       }
-      if (i < b.length) {
-        if (reg.test(b[i])) {
-          b[i] = " ";
+      if (i < b2.length) {
+        if (reg2.test(b2[i])) {
+          b2[i] = " ";
         }
-        str += "<span>"+ a[i] +"</span>"+ "<rt>" + b[i] + "</rt>"
+        str2 += "<span>"+ a2[i] +"</span>"+ "<rt>" + b2[i] + "</rt>"
       } else {
-        str += a[i]
+        str2 += a2[i]
       }
 
     }
-    myruby.innerHTML = str;
+    myruby2.innerHTML = str2;
     q.appendChild(myruby);
 
   </script>
+  
   </div>
   <!-- footer section -->
   <section class="container-fluid footer_section">
