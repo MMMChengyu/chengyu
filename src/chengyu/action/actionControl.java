@@ -161,14 +161,14 @@ public class actionControl extends baseControl {
 	
 	private void showdetail(HttpServletRequest request, HttpServletResponse response) throws InstantiationException,
 		    IllegalAccessException, ClassNotFoundException, SQLException, ServletException, IOException {
-	
-		String Did = request.getParameter("Idomsid");
+		System.out.println("123");
+		String idomsid = request.getParameter("idomsid");
 		Idoms current = new Idoms();
 		IdomsDAO Idomsdao = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
-		int id = Integer.parseInt(Did);
+		int id = Integer.parseInt(idomsid);
 		current = Idomsdao.findIdom(id);
 		request.setAttribute("current", current);
-		request.getRequestDispatcher("details.jsp").forward(request, response);
+		request.getRequestDispatcher("detail.jsp").forward(request, response);
 	}
 
 //	private void addCart(HttpServletRequest request, HttpServletResponse response) throws InstantiationException,

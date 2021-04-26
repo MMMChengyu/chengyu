@@ -32,7 +32,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>action</servlet-name>
-    <servlet-class>chengyu.action.ActionControl</servlet-class>
+    <servlet-class>chengyu.action.actionControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>action</servlet-name>

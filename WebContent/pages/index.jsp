@@ -60,7 +60,7 @@ int count =0;
  <!-- responsive style -->
  <link href="../css/responsive.css" rel="stylesheet" />
  <link href="../css/index.css" rel="stylesheet" />
-
+<link href="../css/bootstrap.min.css" rel="stylesheet">
 
 
  <link rel="stylesheet" href="../css/css-circular-prog-bar.css">
@@ -89,24 +89,30 @@ int count =0;
 			        		out.println("<li>");
 			        		out.println(" <div class=\"widget widget-article widget-shadow\">");
 			        		out.println("<div class=\"widget-header cover overlay overlay-hover\">");
-			        		out.println(" <img class=\"cover-image overlay-scale\" src=\"../images/chengyu/"+idoms.getImg()+"\">");
+			        		out.println(" <a href=\"action?actiontype=detail&idomsid="+idoms.getid()+"\"><img class=\"cover-image overlay-scale\" src=\"../images/chengyu/"+idoms.getImg()+"\"></a>");
 			        		out.println("</div>");
 			        		out.println("<div class=\"widget-body\">");
 			        		out.println("<div class=\"widget-body-footer\">");
 			        		out.println("<form>");
-			        		out.println("<select>");
+			        		out.println("<select class=\""+count+"\">");
 			        		IdomsDAO idomsDAO = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
 				        	ArrayList<Idoms> myidoms = idomsDAO.findthreeIdoms(idoms.getid());
-				        	myidoms.add(idoms);
-				        	Collections.shuffle(myidoms);
+				        	int num = (int)(Math.random()*10)%3;
+				        	//System.out.println(num);
+				        	Idoms temp = myidoms.get(num);
+				        	myidoms.set(num, idoms);
+				        	myidoms.add(temp);
+				      
 				         	out.println("<option selected=selected>请选择正确的成语</option>");
 				         	for(int i=0;i<myidoms.size();i++){
 				         		out.println(" <option>"+myidoms.get(i).getname()+"</option>");
 				         	}
 							out.println("</select>");
 							
-							out.println("<button  class=\"btn btn-info waves-effect waves-light\">确定</button> ");
-			        		out.println("</form>");
+							//out.println("<button  class=\"btn btn-info waves-effect waves-light\">确定</button> ");
+			        		out.println("<input  class=\"btn btn-info waves-effect waves-light\" type=\"button\" value=\"确定\" onClick=\"checkAnswer("+count+",'"+idoms.getname()+"')\"/>");
+			        		count++;
+							out.println("</form>");
 			        		out.println(" </div>");
 			        		out.println(" </div>");
 			        		out.println(" </div>");
@@ -146,16 +152,21 @@ int count =0;
 			        		out.println("<select>");
 			        		IdomsDAO idomsDAO = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
 				        	ArrayList<Idoms> myidoms = idomsDAO.findthreeIdoms(idoms.getid());
-				        	myidoms.add(idoms);
-				        	Collections.shuffle(myidoms);
+				        	int num = (int)(Math.random()*10)%3;
+				        	//System.out.println(num);
+				        	Idoms temp = myidoms.get(num);
+				        	myidoms.set(num, idoms);
+				        	myidoms.add(temp);
+				      
 				         	out.println("<option selected=selected>请选择正确的成语</option>");
 				         	for(int i=0;i<myidoms.size();i++){
 				         		out.println(" <option>"+myidoms.get(i).getname()+"</option>");
 				         	}
 							out.println("</select>");
 							
-							out.println("<button  class=\"btn btn-info waves-effect waves-light\">确定</button> ");
-			        		out.println("</form>");
+							out.println("<input  class=\"btn btn-info waves-effect waves-light\" type=\"button\" value=\"确定\" onClick=\"checkAnswer("+count+",'"+idoms.getname()+"')\"/>");
+							count++;
+							out.println("</form>");
 			        		out.println(" </div>");
 			        		out.println(" </div>");
 			        		out.println(" </div>");
@@ -205,18 +216,22 @@ int count =0;
 			        		//out.println("<form onSubmit=\"return checkAnswer("+count+","+idoms.getname()+")\">");
 			        		out.println("<form>");
 			        		out.println("<select>");
-			        		count++;
 			        		IdomsDAO idomsDAO = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
 				        	ArrayList<Idoms> myidoms = idomsDAO.findthreeIdoms(idoms.getid());
-				        	myidoms.add(idoms);
-				        	Collections.shuffle(myidoms);
+				        	int num = (int)(Math.random()*10)%3;
+				        	//System.out.println(num);
+				        	Idoms temp = myidoms.get(num);
+				        	myidoms.set(num, idoms);
+				        	myidoms.add(temp);
+				      
 				         	out.println("<option selected=selected>请选择正确的成语</option>");
 				         	for(int i=0;i<myidoms.size();i++){
 				         		out.println(" <option value=\""+myidoms.get(i).getname()+"\">"+myidoms.get(i).getname()+"</option>");
 				         	}
 							out.println("</select>");
 							
-							out.println("<button  class=\"btn btn-info waves-effect waves-light\">确定</button> ");
+							out.println("<input  class=\"btn btn-info waves-effect waves-light\" type=\"button\" value=\"确定\" onClick=\"checkAnswer("+count+",'"+idoms.getname()+"')\"/>");
+							count++;
 			        		out.println("</form>");
 			        		out.println(" </div>");
 			        		out.println(" </div>");
@@ -257,15 +272,20 @@ int count =0;
 			        		out.println("<select>");
 			        		IdomsDAO idomsDAO = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
 				        	ArrayList<Idoms> myidoms = idomsDAO.findthreeIdoms(idoms.getid());
-				        	myidoms.add(idoms);
-				        	Collections.shuffle(myidoms);
+				        	int num = (int)(Math.random()*10)%3;
+				        	//System.out.println(num);
+				        	Idoms temp = myidoms.get(num);
+				        	myidoms.set(num, idoms);
+				        	myidoms.add(temp);
+				      
 				         	out.println("<option selected=selected>请选择正确的成语</option>");
 				         	for(int i=0;i<myidoms.size();i++){
 				         		out.println(" <option>"+myidoms.get(i).getname()+"</option>");
 				         	}
 							out.println("</select>");
 							
-							out.println("<button  class=\"btn btn-info waves-effect waves-light\">确定</button> ");
+							out.println("<input  class=\"btn btn-info waves-effect waves-light\" type=\"button\" value=\"确定\" onClick=\"checkAnswer("+count+",'"+idoms.getname()+"')\"/>");
+							count++;
 			        		out.println("</form>");
 			        		out.println(" </div>");
 			        		out.println(" </div>");
@@ -296,6 +316,26 @@ int count =0;
   <!-- end client section -->
 
 
+	<div class="col-sm-12">
+		<table>
+		
+			<tr>
+			<ul class="pager">
+			<li><a name="btnTopPage" id="btnTopPage" href="index.jsp?pageNO=1">首页</a></li>
+			<li><a name="btnPreviousPage" id="btnPreviousPage"
+								href="index.jsp?pageNO=${requestScope.pageModel.prevPageNO}">上一页</a></li>
+			<li class="disabled"><a href="#">${requestScope.pageModel.getPageNO()} / ${requestScope.pageModel.bottomPageNO}
+			</a></li>
+		    <li><a name="btnNextPage" id="btnNextPage"
+											href="index.jsp?pageNO=${requestScope.pageModel.nextPageNO}" >下一页</a></li>
+			<li><a name="btnBottomPage"	id="btnBottomPage"
+							href="index.jsp?pageNO=${requestScope.pageModel.bottomPageNO}">尾页</a></li>
+			</ul>
+			</tr>
+				</table>
+							
+	</div>
+
     
 
   <!-- footer section -->
@@ -306,12 +346,18 @@ int count =0;
   </section>
   <!-- footer section -->
 
+
   <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="../js/bootstrap.js"></script>
   <script language="javascript">
-  function checkUserInfo(type,name) {
-	  let value = document.querySelectorAll("form")[type].value();
-	  if(value == name){
+  function checkAnswer(count,name) {
+	  console.log(count);
+	  let myselect = document.querySelectorAll("select")[count];
+	  
+	  let value = myselect.selectedIndex;
+	  console.log(value);
+	  let option = document.querySelectorAll("select")[count].querySelectorAll("option")[value].text;
+	  if(option == name){
 		  alert('回答正确！');
 	  }else{
 		  alert('回答错误');
