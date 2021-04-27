@@ -82,6 +82,42 @@
 	font-weight:bold;
 	font-family:'youyuan';
 }</style>
+
+<script>
+    window.onload = function () {
+        //每10秒弹出一个桌面通知.
+        var number = setInterval(notifyMe, 1800 * 1000);
+    }
+    function notifyMe() {
+        var options = {
+            dir: "auto",
+            lang: "utf-8",
+            body: "小朋友已经学习半小时啦~休息一会再学习哦！",
+            tag: "id", //标识
+            icon: "iconUrl" //
+        };
+        //检查浏览器是否支持Notification.
+        if (!("Notification" in window)) {
+            alert("当前浏览器不支持Notification.");
+        }
+            //检查用户是否已授权,安全性第一,顺便还可以避免赖皮广告.
+        else if (Notification.permission == "granted") {
+            //如果已授权,则创建一个Notification对象.
+            var notification = new Notification("休息提醒", options);
+        }
+        else if (Notification.permission == "denied") {
+            //如果用户拒绝,则用常规的方式提示,比如:alert().
+            alert(options.body);
+        }
+        else {
+            //用户未授权,则向用户询问是否授权.
+            Notification.requestPermission(function (permission) {
+                //用户同意授权,则创建一个Notification对象.
+                var notification = new Notification("休息提醒", options);
+            });
+        }
+    }
+</script>
 </head><!--/head-->
 
 <body>
@@ -112,7 +148,7 @@
                 </li>
 
                 <li class="nav-item ">
-                  <a class="nav-link" href="admission.html"> 学习分析 </a>
+                 <a class="nav-link" href="test.jsp">小测试 </a>
                 </li>
 
                
@@ -120,11 +156,11 @@
 					<%
 					Users cuss = (Users) session.getAttribute("loginuser");
 									if(cuss == null){
-										out.println("<li><a href=\"login.jsp\">请登录</a></li>");
+										out.println("<li><a href=\"login.jsp\" style=\"margin-top: -10px;display: inline-block;\">请登录</a></li>");
 									}
 									else{
-										out.println("<li><a href=\"\"></i>欢迎："+cuss.getUsername()+"</a></li>");
-										out.println("<li><a href=\"action?actiontype=logOut\"></i>注销</a></li>");
+										out.println("<li><a href=\"\" style=\"margin-top: -10px;display: inline-block;\"></i>欢迎："+cuss.getUsername()+"</a></li>");
+										out.println("<li><a href=\"action?actiontype=logOut\" style=\"margin-top: -10px;display: inline-block;\"></i>注销</a></li>");
 									}
 								%>
 								</li>
@@ -149,7 +185,7 @@
 							<input type="text" placeholder="用户名" name="loginName"/>
 							<input type="password" placeholder="密码" name="loginPass"/>	
 							<input type="text"  placeholder="验证码" name="code" >  
-        					<img width="80px" height="30px" id="imagee" border="0"  onclick="refresh()" src="image.jsp" title="点击更换图片">  
+        					<img style="margin-left:20px;" width="80px" height="30px" id="imagee" border="0"  onclick="refresh()" src="image.jsp" title="点击更换图片">  
 							<input type="hidden" name="actiontype" value="login">						
 							<button type="submit" class="btn btn-default">登录</button>
 						</form>

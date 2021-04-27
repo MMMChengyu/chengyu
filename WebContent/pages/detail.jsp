@@ -3,7 +3,10 @@
     pageEncoding="UTF-8"%>
      <%@page import="chengyu.bean.Users"%>
      <%@page import="chengyu.bean.Idoms"%>
-     <%@page import="chengyu.dao.IdomsDAO"%>
+     <%@page import="chengyu.dao.*"%>
+     <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+     <%@page import="chengyu.utils.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,14 +28,14 @@
  <style>
  .m{
 	    width: 100%;
-    margin-top: -50px;
+    margin-top: -20px;
     overflow: hidden;
 }
 .shiyi{
 	font-size:30px;
 	font-family:'stcaiyun';
 	margin-top:40px;
-	    margin-bottom: 20px;
+	margin-bottom: 20px;
 	color:orange;
 }
 .wrapper{
@@ -89,6 +92,7 @@ font-size: 30px;
 }
 ul li{
 font-size:16px;
+overflow: hidden;
 }
 .m ul li{
 	width: 100%;
@@ -104,7 +108,54 @@ font-size:16px;
     margin-bottom: 10px;
     border-radius: 15px 15px 15px 15px;
 }
+.m ul li a{
+	width: 100%;
+    height: 35px;
+    line-height: 35px;
+    color: white;
+    text-align: center;
+    font-family: 'fangsong';
+    font-weight: bolder;
+    font-size: 18px;
+    letter-spacing: 4px;
+}
  </style>
+ <script>
+    window.onload = function () {
+        //每10秒弹出一个桌面通知.
+        var number = setInterval(notifyMe, 1800 * 1000);
+    }
+    function notifyMe() {
+        var options = {
+            dir: "auto",
+            lang: "utf-8",
+            body: "小朋友已经学习半小时啦~休息一会再学习哦！",
+            tag: "id", //标识
+            icon: "iconUrl" //
+        };
+        //检查浏览器是否支持Notification.
+        if (!("Notification" in window)) {
+            alert("当前浏览器不支持Notification.");
+        }
+            //检查用户是否已授权,安全性第一,顺便还可以避免赖皮广告.
+        else if (Notification.permission == "granted") {
+            //如果已授权,则创建一个Notification对象.
+            var notification = new Notification("休息提醒", options);
+        }
+        else if (Notification.permission == "denied") {
+            //如果用户拒绝,则用常规的方式提示,比如:alert().
+            alert(options.body);
+        }
+        else {
+            //用户未授权,则向用户询问是否授权.
+            Notification.requestPermission(function (permission) {
+                //用户同意授权,则创建一个Notification对象.
+                var notification = new Notification("休息提醒", options);
+            });
+        }
+    }
+</script>
+
 </head>
 <body>
 
@@ -134,18 +185,18 @@ font-size:16px;
                 </li>
 
                 <li class="nav-item ">
-                  <a class="nav-link" href="admission.html"> 学习分析 </a>
+                  <a class="nav-link" href="test.jsp">小测试 </a>
                 </li>
 
                 <li>
 					<%
 					Users cuss = (Users) session.getAttribute("loginuser");
 									if(cuss == null){
-										out.println("<li><a href=\"login.jsp\">请登录</a></li>");
+										out.println("<li><a href=\"login.jsp\" style=\"margin-top: -10px;display: inline-block;\">请登录</a></li>");
 									}
 									else{
-										out.println("<li><a href=\"\"></i>欢迎："+cuss.getUsername()+"</a></li>");
-										out.println("<li><a href=\"action?actiontype=logOut\"></i>注销</a></li>");
+										out.println("<li><a href=\"\" style=\"margin-top: -10px;display: inline-block;\"></i>欢迎："+cuss.getUsername()+"</a></li>");
+										out.println("<li><a href=\"action?actiontype=logOut\" style=\"margin-top: -10px;display: inline-block;\"></i>注销</a></li>");
 									}
 								%>
 								</li>
@@ -159,36 +210,28 @@ font-size:16px;
 
   </div>
   <!-- end header section -->
- <p class="chengyu" id="cy"><img src="../images/hu.jpg" width="50px" height="50px">${requestScope.current.getname()}<img src="../images/hu.jpg" width="50px" height="50px"></p>
+ <p class="chengyu" id="cy"><img src="../images/hu.jpg" width="50px" height="50px">${requestScope.current.getname()}<img src="../images/hu.jpg" width="50px" height="50px" style="margin-left:0px;"></p>
 				  <section class="m">	
 				   <div  id="leftt">
 							<video width="700" height="480" src="../video/${requestScope.current.getVideo()}"  controls="controls"></video>
 						</div>
 				<div id="rightt">
-				<h3  class="tuijain"><img src="../images/xiong.jpg" width="40px" height="50px">推荐成语<img src="../images/xiong.jpg" width="40px" height="50px"></h3>
+				<h3  class="tuijain"><img src="../images/xiong.jpg" width="40px" height="50px">推荐成语<img src="../images/xiong.jpg" width="40px" height="50px" style="margin-left:0px;"></h3>
 				<ul>
-				<script>
-				let i1 = document.getElementById("cy");
-				IdomsDAO idomsdao = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
-			</script>
-				<li>
-				<script>
-				let i2 = 7;
-				Idoms id1 = idomsDAO.findIdom(i2);
-				let p1 = document.querySelector("li");
-				let myrubyy = document.createElement("li");
-				myrubyy.innerHTML = id1.getname();
-				 p1.appendChild(myrubyy);
-				</script>
-				</li>
-				<li>
-				一鸣惊人
-				</li>
-				<li>
-				三顾茅庐
-				</li><li>
-				夸父逐日
-				</li>
+				<li id="thischengyu"></li>
+				<%
+				Idoms dish = new Idoms();
+				IdomsDAO iddao = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
+            	List<Idoms> showIdoms = iddao.findfiveIdoms();
+            	for(Idoms idoms:showIdoms)
+            	{
+            		out.println("<li>");
+            		//out.println("<a href=\"action?actiontype=detail&idomsid="+idoms.getid()+">");
+            		out.println(idoms.getname());
+            		//out.println("</a>");
+            		out.println("</li>");
+           	}
+				%>
 				</ul>
 				</div>
 					</section>
@@ -292,7 +335,7 @@ font-size:16px;
   </section>
   <!-- footer section -->
 
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.js"></script>
 </body>
 </html>

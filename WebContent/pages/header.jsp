@@ -55,17 +55,17 @@
                 </li>
 
                 <li class="nav-item ">
-                  <a class="nav-link" href="admission.html">做题分析</a>
+                  <a class="nav-link" href="test.jsp">小测试</a>
                 </li>
                 <li style="margin-top:20px;">
 					<%
 					Users cuss = (Users) session.getAttribute("loginuser");
 									if(cuss == null){
-										out.println("<li><a href=\"login.jsp\">请登录</a></li>");
+										out.println("<li><a href=\"login.jsp\" style=\"margin-top: -10px;display: inline-block;\">请登录</a></li>");
 									}
 									else{
-										out.println("<li><a href=\"\"></i>欢迎："+cuss.getUsername()+"</a></li>");
-										out.println("<li><a href=\"action?actiontype=logOut\"></i>注销</a></li>");
+										out.println("<li><a href=\"\" style=\"margin-top: -10px;display: inline-block;\"></i>欢迎："+cuss.getUsername()+"</a></li>");
+										out.println("<li><a href=\"action?actiontype=logOut\" style=\"margin-top: -10px;display: inline-block;\"></i>注销</a></li>");
 									}
 								%>
 								</li>

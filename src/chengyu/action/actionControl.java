@@ -161,7 +161,7 @@ public class actionControl extends baseControl {
 	
 	private void showdetail(HttpServletRequest request, HttpServletResponse response) throws InstantiationException,
 		    IllegalAccessException, ClassNotFoundException, SQLException, ServletException, IOException {
-		System.out.println("123");
+		//System.out.println("123");
 		String idomsid = request.getParameter("idomsid");
 		Idoms current = new Idoms();
 		IdomsDAO Idomsdao = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
@@ -279,8 +279,6 @@ public class actionControl extends baseControl {
 	private void logOut(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("loginuser");
-		if(session.getAttribute("admin").equals(true))
-			response.sendRedirect("login.jsp");
 		response.sendRedirect("index.jsp");
 	}
 	

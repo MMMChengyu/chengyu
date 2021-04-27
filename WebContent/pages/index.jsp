@@ -62,9 +62,42 @@ int count =0;
  <link href="../css/index.css" rel="stylesheet" />
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/main.css" rel="stylesheet">
-
-
  <link rel="stylesheet" href="../css/css-circular-prog-bar.css">
+  <script>
+    window.onload = function () {
+        //每10秒弹出一个桌面通知.
+        var number = setInterval(notifyMe, 1800 * 1000);
+    }
+    function notifyMe() {
+        var options = {
+            dir: "auto",
+            lang: "utf-8",
+            body: "小朋友已经学习半小时啦~休息一会再学习哦！",
+            tag: "id", //标识
+            icon: "iconUrl" //
+        };
+        //检查浏览器是否支持Notification.
+        if (!("Notification" in window)) {
+            alert("当前浏览器不支持Notification.");
+        }
+            //检查用户是否已授权,安全性第一,顺便还可以避免赖皮广告.
+        else if (Notification.permission == "granted") {
+            //如果已授权,则创建一个Notification对象.
+            var notification = new Notification("休息提醒", options);
+        }
+        else if (Notification.permission == "denied") {
+            //如果用户拒绝,则用常规的方式提示,比如:alert().
+            alert(options.body);
+        }
+        else {
+            //用户未授权,则向用户询问是否授权.
+            Notification.requestPermission(function (permission) {
+                //用户同意授权,则创建一个Notification对象.
+                var notification = new Notification("休息提醒", options);
+            });
+        }
+    }
+</script>
 </head>
 <body>
 
@@ -73,10 +106,8 @@ int count =0;
 
 	<div class="col-sm-3 mysearch_box">
 		<div class="search_box pull-right">
-		<form action="action?actiontype=search" method="post" >
-		<input type="text" placeholder="学点啥？" name="query" >&nbsp; 
-			<button class="btn btn-default get search_button" style="margin-top: 0px" id="search"><i
-				class="fa fa-search"></i> 搜索 </button>
+		<form action="action?actiontype=search" method="post" ><input type="text" placeholder="学点啥？" name="query" >&nbsp; 
+			<button class="btn btn-default get search_button" style="margin-top: 0px;    padding: 15px 12px;border-radius: 25px;" id="search">搜索 </button>
 				<input type="hidden" name="actiontype" value="search">
 				<input type="hidden" name="pageNO" value="1">
 		</form>
@@ -373,9 +404,9 @@ int count =0;
 	  console.log(value);
 	  let option = document.querySelectorAll("select")[count].querySelectorAll("option")[value].text;
 	  if(option == name){
-		  alert('回答正确！');
+		  alert('哇！小朋友真棒！回答正确哦~');
 	  }else{
-		  alert('回答错误');
+		  alert( '呜呜呜~回答错误啦~再接再厉哦~');
 	  }
   }
   </script>

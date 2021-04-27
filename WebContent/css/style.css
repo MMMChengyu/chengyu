@@ -29,13 +29,15 @@ body {
 
 .call_to-btn {
   display: inline-block;
-  padding: 15px 45px;
-  border-radius: 10px;
-  font-size: 15px;
-  background-color: #ffffff;
-  color: #262627;
-  font-weight: 600;
-  transition: all 0.3s ease 0s;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-family: system-ui;
+    letter-spacing: 6px;
+    background-color: #ffffff;
+    color: #FFB64F;
+    font-weight: 600;
+    transition: all 0.3s ease 0s;
 }
 
 .hero_section .call_to-btn {}

@@ -1,6 +1,9 @@
 eclipse.preferences.version=1
 encoding//WebContent/css/index.css=UTF-8
 encoding//WebContent/css/main.css=UTF-8
+encoding//WebContent/css/risk_test.css=UTF-8
 encoding//WebContent/pages/detail.jsp=UTF-8
+encoding//WebContent/pages/head.jsp=UTF-8
 encoding//WebContent/pages/header.jsp=UTF-8
 encoding//WebContent/pages/index.jsp=UTF-8
+encoding//WebContent/pages/test.jsp=UTF-8

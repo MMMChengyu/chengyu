@@ -228,9 +228,10 @@ body {
 }
  input, select, textarea {
 	font-family: inherit;
-	font-size: inherit;
-	line-height: inherit;
-	width: 150px;
+    font-size: 15px;
+    /* border-color: blue; */
+    line-height: inherit;
+    width: 165px;
 }
 select{
 	height:32px;
@@ -605,8 +606,6 @@ pre code {
 .container {
 	padding-right: 15px;
 	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto
 }
 @media (min-width:768px) {
 .container {
@@ -2035,7 +2034,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
 	color: #fff;
 	background-color: #57c7d4;
 	border-color: #57c7d4;
-	width:80px !important;
+	width:50px !important;
 }
 .btn-info.focus, .btn-info:focus {
 	color: #fff;
@@ -5748,14 +5747,15 @@ button.input-search-close {
 }
 }
 .btn {
-	padding: 6px 15px;
-	font-size: 14px;
-	line-height: 1.57142857;
-	border-radius: 3px;
-	-webkit-transition: border .2s linear, color .2s linear, width .2s linear, background-color .2s linear;
-	-o-transition: border .2s linear, color .2s linear, width .2s linear, background-color .2s linear;
-	transition: border .2s linear, color .2s linear, width .2s linear, background-color .2s linear;
-	-webkit-font-smoothing: subpixel-antialiased
+	padding: 5px 10px;
+    font-size: 13px;
+    background-color: #6EBCA8;
+    color: white;
+    line-height: 1.57142857;
+    -webkit-transition: border .2s linear, color .2s linear, width .2s linear, background-color .2s linear;
+    -o-transition: border .2s linear, color .2s linear, width .2s linear, background-color .2s linear;
+    transition: border .2s linear, color .2s linear, width .2s linear, background-color .2s linear;
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 .btn.active:focus, .btn:active:focus, .btn:focus {
 	outline: 0

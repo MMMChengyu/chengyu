@@ -21,19 +21,52 @@
 <title>成语分类</title>
  <link href="../css/bootstrap.min.css" rel="stylesheet">
      <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-     <link rel="stylesheet" href="../css/css-circular-prog-bar.css">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/prettyPhoto.css" rel="stylesheet">
     <link href="../css/price-range.css" rel="stylesheet">
     <link href="../css/stylee.css" rel="stylesheet" />
-    <link href="../css/animate.css" rel="stylesheet">
 	<link href="../css/main.css" rel="stylesheet">
 	<link href="../css/responsive.css" rel="stylesheet">
  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
  <link href="../css/style.css" rel="stylesheet" />
- 
- 
- 
+ <script type="text/javascript" src="https://www.huangwx.cn/js/jquery.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="https://www.huangwx.cn/css/sweetalert.css">
+<script type="text/javascript" src="https://www.huangwx.cn/js/sweetalert-dev.js"></script>
+ <script>
+    window.onload = function () {
+        //每10秒弹出一个桌面通知.
+        var number = setInterval(notifyMe, 1800 * 1000);
+    }
+    function notifyMe() {
+        var options = {
+            dir: "auto",
+            lang: "utf-8",
+            body: "小朋友已经学习半小时啦~休息一会再学习哦！",
+            tag: "id", //标识
+            icon: "iconUrl" //
+        };
+        //检查浏览器是否支持Notification.
+        if (!("Notification" in window)) {
+            alert("当前浏览器不支持Notification.");
+        }
+            //检查用户是否已授权,安全性第一,顺便还可以避免赖皮广告.
+        else if (Notification.permission == "granted") {
+            //如果已授权,则创建一个Notification对象.
+            var notification = new Notification("休息提醒", options);
+        }
+        else if (Notification.permission == "denied") {
+            //如果用户拒绝,则用常规的方式提示,比如:alert().
+            alert(options.body);
+        }
+        else {
+            //用户未授权,则向用户询问是否授权.
+            Notification.requestPermission(function (permission) {
+                //用户同意授权,则创建一个Notification对象.
+                var notification = new Notification("休息提醒", options);
+            });
+        }
+    }
+</script>
 </head>
 <!--/head-->
 <style type="text/css">
@@ -59,6 +92,10 @@ ul li a{
 	font-family:'youyuan';
 }
 </style>
+<%
+int count =0;
+%>
+
 <body>
 <div class="top_container ">
     <!-- header section strats -->
@@ -86,18 +123,18 @@ ul li a{
                 </li>
 
                 <li class="nav-item ">
-                  <a class="nav-link" href="admission.html"> 学习分析 </a>
+                  <a class="nav-link" href="test.jsp">小测试 </a>
                 </li>
 
                 <li>
 					<%
 									Users cuss = (Users) session.getAttribute("loginuser");
 									if(cuss == null){
-										out.println("<li><a href=\"login.jsp\">请登录</a></li>");
+										out.println("<li><a href=\"login.jsp\" style=\"margin-top: -10px;display: inline-block;\">请登录</a></li>");
 									}
 									else{
-										out.println("<li><a href=\"\"></i>欢迎："+cuss.getUsername()+"</a></li>");
-										out.println("<li><a href=\"action?actiontype=logOut\"></i>注销</a></li>");
+										out.println("<li><a href=\"\" style=\"margin-top: -10px;display: inline-block;\"></i>欢迎："+cuss.getUsername()+"</a></li>");
+										out.println("<li><a href=\"action?actiontype=logOut\" style=\"margin-top: -10px;display: inline-block;\"></i>注销</a></li>");
 									}
 								%>
 								</li>
@@ -199,17 +236,27 @@ ul li a{
  	        	out.println("<div class=\"col-sm-3\">");
  	        	out.println("<div class=\"product-image-wrapper\">");
  	        	out.println("<div class=\"productinfo text-center\">");
- 	        	out.println("<a  href=\"action?actiontype=detail&dishid="+dish.getid()+"\"><img src=../images/chengyu/"+dish.getImg() +"  width=\"250px\" height=\"250px\"></a>	");												
+ 	        	out.println("<a onclick=\"return linkClick(this)\"  href=\"action?actiontype=detail&idomsid="+dish.getid()+"\"><img src=../images/chengyu/"+dish.getImg() +"  width=\"250px\" height=\"250px\"></a>	");												
  	        	out.println("<form>");
- 	        	out.println(" <select>");
- 	        			out.println("<option selected=selected>请选择正确的成语</option>");
- 	        					out.println(" <option>艾欧尼亚</option>");
- 	        							out.println(" <option>黑色玫瑰</option>");
- 	        									out.println("  <option>比尔吉沃特</option>");
- 	        											out.println("  <option>弗雷尔卓德</option>");
- 	        													out.println(" </select>");
- 	        															out.println(" <button  class=\"btn btn-info waves-effect waves-light\">确定</button>      ");
- 	        																	out.println("</form>");
+        		out.println("<select class=\""+count+"\">");
+        		IdomsDAO idomsDAO = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
+	        	ArrayList<Idoms> myidoms = idomsDAO.findthreeIdoms(dish.getid());
+	        	int num = (int)(Math.random()*10)%3;
+	        	//System.out.println(num);
+	        	Idoms temp = myidoms.get(num);
+	        	myidoms.set(num, dish);
+	        	myidoms.add(temp);
+	      
+	         	out.println("<option selected=selected>请选择正确的成语</option>");
+	         	for(int i=0;i<myidoms.size();i++){
+	         		out.println(" <option>"+myidoms.get(i).getname()+"</option>");
+	         	}
+				out.println("</select>");
+				
+				//out.println("<button  class=\"btn btn-info waves-effect waves-light\">确定</button> ");
+        		out.println("<input  class=\"btn btn-info waves-effect waves-light\" type=\"button\" value=\"确定\" onClick=\"checkAnswer("+count+",'"+dish.getname()+"')\"/>");
+        		count++;
+				out.println("</form>");
  	        	out.println("</div>");
  	        	out.println("</div>");
  	        	out.println("</div>");
@@ -232,8 +279,23 @@ ul li a{
   </section>
   <!-- footer section -->
 
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-    
+  <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script language="javascript">
+  function checkAnswer(count,name) {
+	  console.log(count);
+	  let myselect = document.querySelectorAll("select")[count];
+	  
+	  let value = myselect.selectedIndex;
+	  console.log(value);
+	  let option = document.querySelectorAll("select")[count].querySelectorAll("option")[value].text;
+	  if(option == name){
+		  alert('哇！小朋友真棒！回答正确哦~');
+	  }else{
+		 alert( '呜呜呜~回答错误啦~再接再厉哦~');
+	  }
+  }
+  </script>
+ 
 </body>
 </html>
