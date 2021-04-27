@@ -42,10 +42,27 @@ body {
 .hero_section{
 	position: relative;
     top: -80px;
+    margin-bottom: -210px;
 }
 .call_to-btn img {
   width: 18px;
   margin-left: 10px;
+}
+
+.col-sm-3.mysearch_box{
+	position:absolute;
+	right:45px;
+	top:-100px;
+}
+
+.search_button {
+    background-color: #b4bdbc;
+    color: white;
+    border: none;
+}
+
+.search_button:hover {
+    background-color: #6ebca8;
 }
 
 .btn_on-hover {
@@ -228,7 +245,7 @@ a:focus {
 
 .common_style {
 	position:relative;
-	top:-200px;
+	
 }
 .common_style>section {
   /*padding: 50px 0;*/

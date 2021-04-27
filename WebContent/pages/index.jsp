@@ -61,6 +61,7 @@ int count =0;
  <link href="../css/responsive.css" rel="stylesheet" />
  <link href="../css/index.css" rel="stylesheet" />
 <link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
 
 
  <link rel="stylesheet" href="../css/css-circular-prog-bar.css">
@@ -69,6 +70,20 @@ int count =0;
 
 <jsp:include page="header.jsp"></jsp:include>
   <div class="common_style">
+
+	<div class="col-sm-3 mysearch_box">
+		<div class="search_box pull-right">
+		<form action="action?actiontype=search" method="post" >
+		<input type="text" placeholder="学点啥？" name="query" >&nbsp; 
+			<button class="btn btn-default get search_button" style="margin-top: 0px" id="search"><i
+				class="fa fa-search"></i> 搜索 </button>
+				<input type="hidden" name="actiontype" value="search">
+				<input type="hidden" name="pageNO" value="1">
+		</form>
+			
+		</div>
+	</div>
+
 
     <!-- about section -->
     <section class="about_section">
