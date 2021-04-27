@@ -39,8 +39,9 @@
 	color:orange;
 }
 .wrapper{
-	margin-left:250px;
+	margin-left:200px;
 	margin-right:200px;
+	margin-bottom: 30px;
 }
 .chengyu{
 	    font-size: 38px;
@@ -118,6 +119,10 @@ overflow: hidden;
     font-weight: bolder;
     font-size: 18px;
     letter-spacing: 4px;
+}
+
+ruby{
+	margin-left:47px;
 }
  </style>
  <script>
@@ -235,7 +240,7 @@ overflow: hidden;
 				</ul>
 				</div>
 					</section>
-					<div class="wrapper">
+					<div class="wrapper myshiyi">
   <h3  class="shiyi"><img src="../images/lu.png" width="50px" height="50px">成语释义</h3>
   <script>
     var reg = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/;
@@ -245,7 +250,8 @@ overflow: hidden;
     let b = pinyin.split(' ').filter(function(item) {
       return item.length > 0;
     });
-    let p = document.querySelector(".wrapper");
+    console.log("shiyi"+a);
+    let p = document.querySelector(".myshiyi");
     var str = '';
     // var flag = false;
     let myruby = document.createElement("ruby");
@@ -292,12 +298,13 @@ overflow: hidden;
     let b2 = pinyin2.split(' ').filter(function(item) {
       return item.length > 0;
     });
+    console.log("gushi"+a2);
     let q = document.querySelector(".mygushi");
     var str2 = '';
     // var flag = false;
     let myruby2 = document.createElement("ruby");
     let count2 = 0;
-    for (let i = 0; i < a.length; i++) {
+    for (let i = 0; i < a2.length; i++) {
       // if (!flag) {
       //   flag = true;
       // }
@@ -322,7 +329,7 @@ overflow: hidden;
 
     }
     myruby2.innerHTML = str2;
-    q.appendChild(myruby);
+    q.appendChild(myruby2);
 
   </script>
   

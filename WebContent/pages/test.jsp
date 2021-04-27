@@ -61,7 +61,7 @@ font-family:'youyuan';}
 		        	myidoms.add(temp);
 		        	int j=1;
 		        	for(int k=0;k<myidoms.size();k++){
-		        		out.println("<li>");
+		        		out.println("<li onClick=\"checkAnswer(event,"+i+",'"+idoms.getname()+"')\">");
 	            		out.println("<input id=\"q"+i+"_"+j+"\" type=\"radio\" name=\"r-group-"+i+"\" >");
 		         		//out.println(" <option>"+myidoms.get(i).getname()+"</option>");
 		         		out.println("<label for=\"q"+i+"_"+j+"\">"+myidoms.get(k).getname()+"</label>");
@@ -101,8 +101,32 @@ font-family:'youyuan';}
 	$(function(){
 		$("#answer").answerSheet({});
 	})
-
     </script>
+    <script>
+	  function checkAnswer(event,count,name) {
+		  console.log(event);
+		  if(event.target.nodeName == 'LABEL'){
+			  console.log(event.target.innerText)
+			  if(event.target.innerText == name){
+				  event.target.style.setProperty('color', 'green', 'important');
+			  }else{
+				  event.target.style.setProperty('color', 'red', 'important');
+				  //找到正确答案：
+				  let lis = event.currentTarget.parentElement.querySelectorAll("li");
+				  console.log(lis.length);
+				  
+				  for(let i =0;i<lis.length;i++){
+					  console.log(lis[i].innerText);
+					  if(lis[i].innerText == name){
+						  console.log("eee")
+						  lis[i].querySelector("label").style.setProperty('color', 'green', 'important');
+						  break;
+					  }
+				  }
+			  }
+		  }
+  	}
+  </script>
 </body>
 
 </html>
