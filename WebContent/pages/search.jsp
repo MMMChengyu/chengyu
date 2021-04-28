@@ -118,14 +118,21 @@ int count =0;
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  my-navbar ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.jsp"> 首页 <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="index.jsp" style="margin-right:20px; background-image:url(../images/shoye.png);background-repeat:no-repeat;background-position:center;width: 90px;
+    height: 50px;"></a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="category.jsp"> 成语分类 </a>
+                  <a class="nav-link" href="category.jsp" style="margin-right:20px;background-image:url(../images/fenlei.png);background-repeat:no-repeat;background-position:center;width: 90px;
+    height: 50px;"> </a>
                 </li>
 
                 <li class="nav-item ">
+<<<<<<< HEAD
                   <a class="nav-link" href="test.jsp">小测试 </a>
+=======
+                  <a class="nav-link" href="test.jsp" style="margin-right:20px;background-image:url(../images/ceshi.png);background-repeat:no-repeat;background-position:center;width: 90px;
+    height: 50px;"></a>
+>>>>>>> branch 'master' of https://github.com/MMMChengyu/chengyu
                 </li>
 
                 <li>
