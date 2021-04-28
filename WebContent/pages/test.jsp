@@ -34,7 +34,7 @@ font-family:'youyuan';}
 </style>
 </head>
 
-<body>
+<body style="background-image:url(../images/bg.jpg);background-repeat:no-repeat;background-position:center;width:100%;height:100%;">
 <jsp:include page="head.jsp"></jsp:include>
 <section style="margin-left: 500px;">
 	<div class="wrapper">

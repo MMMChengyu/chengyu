@@ -96,7 +96,7 @@ ul li a{
 int count =0;
 %>
 
-<body>
+<body >
 <div class="top_container ">
     <!-- header section strats -->
     <header class="header_section">
@@ -277,7 +277,7 @@ int count =0;
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>
-      Copyright &copy; 2020.Company name All rights reserved.
+      Copyright &copy; 2021.Company name All rights reserved.
     </p>
   </section>
   <!-- footer section -->
