@@ -31,11 +31,30 @@
 label{
 font-family:'youyuan';}
 
+.score{
+	position:absolute;
+	top:57%;
+	left:75%;
+	font-family:'sthupo';
+	font-size:19px;
+	color:#8f62a7;
+}
+
+p{
+margin-top: -12px !important;
+}
 </style>
 </head>
 
 <body style="background-image:url(../images/bg.jpg);background-repeat:no-repeat;background-position:center;width:100%;height:100%;">
 <jsp:include page="head.jsp"></jsp:include>
+
+<div class = 'score'>
+	<p>答题数：0</p>
+	<p>答对：0</p>
+	<p>答错：0</p>
+</div>
+
 <section style="margin-left: 500px;">
 	<div class="wrapper">
     	<div id="answer" class="card_wrap">
@@ -84,7 +103,7 @@ font-family:'youyuan';}
 	</div>
 	
 	</section>
-        <!-- footer section -->
+  <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>
       Copyright &copy; 2021.Company name All rights reserved.
@@ -103,14 +122,19 @@ font-family:'youyuan';}
 	})
     </script>
     <script>
+      let all = 0,correct =0,error=0;
+      let score_box = document.querySelectorAll(".score p");
 	  function checkAnswer(event,count,name) {
 		  console.log(event);
 		  if(event.target.nodeName == 'LABEL'){
+			  all ++;
 			  console.log(event.target.innerText)
 			  if(event.target.innerText == name){
 				  event.target.style.setProperty('color', 'green', 'important');
+				  correct++;
 			  }else{
 				  event.target.style.setProperty('color', 'red', 'important');
+				  error++;
 				  //找到正确答案：
 				  let lis = event.currentTarget.parentElement.querySelectorAll("li");
 				  console.log(lis.length);
@@ -124,6 +148,12 @@ font-family:'youyuan';}
 					  }
 				  }
 			  }
+			  console.log(all);
+			  console.log(correct);
+			  console.log(error);
+			  score_box[0].innerText = "答题数：" + all;
+			  score_box[1].innerText = "答对："+ correct;
+			  score_box[2].innerText = "答错："+ error;
 		  }
   	}
   </script>
