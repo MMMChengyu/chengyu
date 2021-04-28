@@ -164,7 +164,7 @@ ruby{
 </head>
 <body>
 
-	 <div class="top_container ">
+<div class="top_container ">
     <!-- header section strats -->
     <header class="header_section">
       <div class="container">
@@ -219,31 +219,30 @@ ruby{
   </div>
   <!-- end header section -->
  <p class="chengyu" id="cy"><img src="../images/hu.jpg" width="50px" height="50px">${requestScope.current.getname()}<img src="../images/hu.jpg" width="50px" height="50px" style="margin-left:0px;"></p>
-				  <section class="m">	
-				   <div  id="leftt">
-							<video width="700" height="480" src="../video/${requestScope.current.getVideo()}"  controls="controls"></video>
-						</div>
-				<div id="rightt">
-				<h3  class="tuijain"><img src="../images/xiong.jpg" width="40px" height="50px">推荐成语<img src="../images/xiong.jpg" width="40px" height="50px" style="margin-left:0px;"></h3>
-				<ul>
-				<li id="thischengyu"></li>
-				<%
-				Idoms dish = new Idoms();
-				IdomsDAO iddao = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
-            	List<Idoms> showIdoms = iddao.findfiveIdoms();
-            	for(Idoms idoms:showIdoms)
-            	{
-            		out.println("<li>");
-            		//out.println("<a href=\"action?actiontype=detail&idomsid="+idoms.getid()+">");
-            		out.println(idoms.getname());
-            		//out.println("</a>");
-            		out.println("</li>");
-           	}
-				%>
-				</ul>
-				</div>
-					</section>
-					<div class="wrapper myshiyi">
+  <section class="m">	
+   		<div  id="leftt">
+			<video width="700" height="480" src="../video/${requestScope.current.getVideo()}"  controls="controls"></video>
+		</div>
+		<div id="rightt">
+		<h3  class="tuijain"><img src="../images/xiong.jpg" width="40px" height="50px">推荐成语<img src="../images/xiong.jpg" width="40px" height="50px" style="margin-left:0px;"></h3>
+		<ul>
+		<%
+		Idoms dish = new Idoms();
+		IdomsDAO iddao = (IdomsDAO) DAOFactory.newInstance("IdomsDAO");
+		        	List<Idoms> showIdoms = iddao.findfiveIdoms();
+		        	for(Idoms idoms:showIdoms)
+		        	{
+		        		out.println("<li>");
+		        		out.println("<a href=\"action?actiontype=detail&idomsid="+idoms.getid()+"\">");
+		        		out.println(idoms.getname());
+		        		out.println("</a>");
+		        		out.println("</li>");
+		       	}
+		%>
+		</ul>
+	</div>
+</section>
+<div class="wrapper myshiyi">
   <h3  class="shiyi"><img src="../images/lu.png" width="50px" height="50px">成语释义</h3>
   <script>
     var reg = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/;
@@ -255,6 +254,7 @@ ruby{
     });
     console.log("shiyi"+a);
     let p = document.querySelector(".myshiyi");
+    console.log(p);
     var str = '';
     // var flag = false;
     let myruby = document.createElement("ruby");
