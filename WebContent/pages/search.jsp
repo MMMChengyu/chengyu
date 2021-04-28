@@ -127,12 +127,9 @@ int count =0;
                 </li>
 
                 <li class="nav-item ">
-<<<<<<< HEAD
-                  <a class="nav-link" href="test.jsp">小测试 </a>
-=======
+
                   <a class="nav-link" href="test.jsp" style="margin-right:20px;background-image:url(../images/ceshi.png);background-repeat:no-repeat;background-position:center;width: 90px;
     height: 50px;"></a>
->>>>>>> branch 'master' of https://github.com/MMMChengyu/chengyu
                 </li>
 
                 <li>
@@ -217,7 +214,16 @@ int count =0;
 				</table>
 							
 	</div>
+<!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; 2021.Company name All rights reserved.
+    </p>
+  </section>
+  <!-- footer section -->
 
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
   <script language="javascript">
   function checkAnswer(count,name) {
 	  console.log(count);
